@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PackageCard from '../components/PackageCard.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CaseStudyTeaser from '../components/CaseStudyTeaser.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { getCaseStudies, getCompany, getHome, getPackages, getUi, mailtoHref } from '../lib/content';
+import cube from '../assets/brand/cube.png';
+
+const home = await getHome();
+const ui = await getUi();
+const company = await getCompany();
+const packages = await getPackages();
+const caseStudies = await getCaseStudies();
+const processPackage = await getEntry(home.process.package);
+if (!processPackage) throw new Error('home.process.package points to a missing package');
+---
+
+<BaseLayout title={home.title} description={home.description}>
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <h1 id="hero-heading">{home.hero.heading}</h1>
+        <p class="lead hero__lead">{home.hero.lead}</p>
+        <Button href={mailtoHref(company.email, ui.ctaMailSubject)}>{home.hero.cta}</Button>
+      </div>
+      <Image
+        src={cube}
+        alt=""
+        widths={[140, 280, 420]}
+        sizes="(max-width: 48rem) 140px, 280px"
+        class="hero__cube"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="reasons-heading">
+    <div class="container">
+      <SectionHeading id="reasons-heading" heading={home.reasons.heading} />
+      <ul class="reasons">
+        {home.reasons.items.map((item) => <li class="card">{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section id="sluzby" class="section" aria-labelledby="packages-heading">
+    <div class="container">
+      <SectionHeading id="packages-heading" heading={home.packages.heading} />
+      <div class="grid-3">
+        {packages.map((entry) => <PackageCard entry={entry} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="process-heading">
+    <div class="container">
+      <SectionHeading id="process-heading" heading={home.process.heading} lead={home.process.lead} />
+      <ProcessSteps steps={processPackage.data.process} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="studies-heading">
+    <div class="container">
+      <SectionHeading id="studies-heading" heading={home.caseStudies.heading} lead={home.caseStudies.lead} />
+      <div class="grid-2">
+        {caseStudies.map((entry) => <CaseStudyTeaser entry={entry} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner heading={home.cta.heading} />
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 6.5rem);
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .hero__lead {
+    margin-bottom: 2rem;
+  }
+
+  .hero__cube {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(14, 165, 233, 0.25));
+  }
+
+  @media (max-width: 48rem) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__cube {
+      order: -1;
+      width: 140px;
+    }
+  }
+
+  .reasons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .reasons li {
+    margin: 0;
+    border-top: 3px solid var(--color-blue);
+  }
+
+  .reasons li:nth-child(2) {
+    border-top-color: var(--color-green);
+  }
+
+  .reasons li:nth-child(3) {
+    border-top-color: var(--color-green-bright);
+  }
+
+  .grid-3,
+  .grid-2 {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+
+  @media (max-width: 24rem) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
