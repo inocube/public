@@ -101,22 +101,18 @@ Contact page, footer, 404, e-mail
   presunutá.“ · „Späť na úvodnú stránku“
 - `src/content/site/ui.yaml:57` subject of the CTA e-mail „Konzultácia zdarma“
 
-## Owner questions (raised in review, not blocking)
-1. `/kontakt/` shows the CTA text „Dohodnite si 30-minútovú konzultáciu zdarma“ as the lead under the heading
-   (`src/pages/kontakt.astro:17`) and again on the button (`kontakt.astro:27`). Keep both, drop the lead, or
-   drop the button? Left unchanged until you decide (architect finding 7).
-2. Package „Dáta a reporting“ names two references: „integrácia na SAP HANA pri nástupe zamestnancov v banke“
-   (linked to the case study „Digitálny nástup nového zamestnanca v banke“) and „SQL riešenia pre bankové
-   interné aplikácie“. The copy does not say which case study the second one is. Is it „Systém správy obsahu
-   pre banku“ (Angular, C#, SQL)? If yes, it will be linked from `src/content/packages/data-reporting.md:20`
-   too; until then only the onboarding study is linked (architect finding 6).
-3. Approve, change or drop each text under "Texts pending owner approval" above.
-4. „Klienti sú anonymizovaní podľa odvetvia a krajiny.“ is verbatim in the copy (intro of „Prípadové štúdie“)
-   and is shown publicly as a lead on `/` (`src/content/site/home.yaml:28`) and `/referencie/`
-   (`src/content/site/ui.yaml:27`). Is it meant for visitors, or was it an editorial note?
-5. `doc/content/web-copy-sk.md:35` „stavebnú sporiteľňu v ČR“ is more specific than case study 1 („finančná
-   inštitúcia v ČR“). Is that level of identification intended?
-6. Canonical host is `https://inocube.sk` (no www). Does it match the Netlify primary domain?
+## Owner questions (raised in review)
+Answered by the owner on 2026-10-08:
+1. `/kontakt/` duplicated CTA: **drop the lead**, keep the button. Done in `src/pages/kontakt.astro`.
+2. „SQL riešenia pre bankové interné aplikácie“: **yes**, it is „Systém správy obsahu pre banku“. Linked from
+   `src/content/packages/data-reporting.md`.
+3. Texts under "Texts pending owner approval": the owner reviews them on the Netlify deploy preview (still open).
+4. „Klienti sú anonymizovaní podľa odvetvia a krajiny.“ shown as a lead: still open.
+5. „stavebnú sporiteľňu v ČR“: **anonymise** to „finančnú inštitúciu v ČR“ in `doc/content/web-copy-sk.md` and
+   `src/content/packages/ai-agent.md`.
+6. Canonical host: **`https://inocube.sk` without www** is the primary domain (`site` in `astro.config.mjs`,
+   canonical URLs and sitemap already use it).
+7. Home page process example: **keep** the AI-agent steps.
 
 ## Implementation notes
 - Branch: `feat/T-001-astro-rewrite`. PR:
