@@ -19,4 +19,5 @@ reference:
     integrácia na SAP HANA pri nástupe zamestnancov v banke, SQL riešenia pre bankové interné aplikácie.
 caseStudies:
   - digitalny-nastup-zamestnanca
+  - system-spravy-obsahu-banka
 ---
