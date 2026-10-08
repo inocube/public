@@ -1,6 +1,6 @@
 # T-001: Rebuild the site in Astro with the new Slovak copy
 
-- Status: review
+- Status: approved
 - Roadmap phase: 1
 - Branch: feat/T-001-astro-rewrite
 
@@ -194,3 +194,22 @@ Questions for the owner:
 - `web-copy-sk.md:35` "stavebnú sporiteľňu v ČR" is more specific than case study 1 ("finančná inštitúcia v
   ČR"); is that level of identification intended?
 - Canonical host is `https://inocube.sk` (no www): matches the Netlify primary domain?
+
+### Round 2
+Verdict: approved
+
+Checked commits `31f7ac1..9c7ba04`: `npm run build` passes (astro check 0/0/0, 7 pages, sitemap). Round-1 findings:
+1+2. Fixed. `doc/content/web-copy-sk.md` now differs from `main` only by the owner-supplied contact block;
+   the "na schválenie" list is gone. Every text from finding 1 is in "Texts pending owner approval" with
+   correct file:line (spot-checked `ui.yaml`, `home.yaml:4/21/24`, `[slug].astro:23/26`, `kontakt.astro:13`,
+   `solvedio.md:20`, `ai-agent.md:5`); yaml comments point to the task. No other hard-coded copy in `.astro`
+   files (only `aria-label`s from `ui.yaml`, decorative hero `alt=""`). The PR text repeats the list and says
+   merging does not approve it.
+3. Open, external blocker: deploy preview unverified (push 403). Criterion `:37` correctly left unticked;
+   PR "Deploy preview" section tells the owner what to check. Owner must check the preview before merging
+   (AGENTS.md workflow step 3); this approval does not cover it.
+4. Fixed (verified criteria ticked). 5. Fixed (both PNGs deleted, no references).
+6+7. Correctly turned into owner questions 1 and 2; not blocking.
+
+Remaining (owner only, not blocking): approve the pending texts and answer owner questions 1–6 before or in
+the merge; then move approved texts into `doc/content/web-copy-sk.md` in a follow-up.
