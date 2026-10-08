@@ -1,0 +1,40 @@
+---
+import Button from './Button.astro';
+import { getCompany, getUi, mailtoHref, telHref } from '../lib/content';
+
+interface Props {
+  heading: string;
+}
+const { heading } = Astro.props;
+const ui = await getUi();
+const company = await getCompany();
+---
+
+<section class="section" aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="cta card">
+      <h2 id="cta-heading">{heading}</h2>
+      <div class="cta__actions">
+        <Button href={mailtoHref(company.email, ui.ctaMailSubject)}>{company.email}</Button>
+        <Button href={telHref(company.phone)} variant="secondary">{company.phone}</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    text-align: center;
+    background:
+      radial-gradient(ellipse at top, rgba(14, 165, 233, 0.2), transparent 70%),
+      var(--color-surface);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+</style>

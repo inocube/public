@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getUi, packageUrl } from '../lib/content';
+
+interface Props {
+  entry: CollectionEntry<'packages'>;
+}
+const { entry } = Astro.props;
+const ui = await getUi();
+const headingId = `package-${entry.id}`;
+---
+
+<article class="package card" aria-labelledby={headingId}>
+  <p class="package__number" aria-hidden="true">0{entry.data.order}</p>
+  <h3 id={headingId}>{entry.data.title}</h3>
+  <p class="package__for"><strong>{ui.package.forWhom}:</strong> {entry.data.forWhom}</p>
+  <a class="package__link" href={packageUrl(entry.id)}>
+    {ui.package.more}<span class="visually-hidden">: {entry.data.title}</span>
+    <span aria-hidden="true">→</span>
+  </a>
+</article>
+
+<style>
+  .package {
+    display: flex;
+    flex-direction: column;
+    transition:
+      border-color var(--transition),
+      transform var(--transition);
+  }
+
+  .package:hover {
+    border-color: rgba(14, 165, 233, 0.5);
+  }
+
+  .package__number {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    color: var(--color-green-bright);
+  }
+
+  .package__for {
+    color: var(--color-text-muted);
+    flex: 1;
+  }
+
+  .package__for strong {
+    color: var(--color-text);
+  }
+
+  .package__link {
+    font-weight: 600;
+  }
+</style>

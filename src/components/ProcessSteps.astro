@@ -1,0 +1,56 @@
+---
+interface Props {
+  steps: string[] | string;
+}
+const { steps } = Astro.props;
+---
+
+{
+  Array.isArray(steps) ? (
+    <ol class="steps">
+      {steps.map((step) => (
+        <li class="steps__item">{step}</li>
+      ))}
+    </ol>
+  ) : (
+    <p class="sentence-case">{steps}</p>
+  )
+}
+
+<style>
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+
+  .steps__item {
+    counter-increment: step;
+    position: relative;
+    margin: 0;
+    padding: 3.25rem 1.25rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .steps__item::before {
+    content: counter(step);
+    position: absolute;
+    top: 1.125rem;
+    left: 1.25rem;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    color: var(--color-on-accent);
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+</style>
