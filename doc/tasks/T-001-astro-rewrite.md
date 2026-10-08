@@ -1,6 +1,6 @@
 # T-001: Rebuild the site in Astro with the new Slovak copy
 
-- Status: review
+- Status: changes-requested
 - Roadmap phase: 1
 - Branch: feat/T-001-astro-rewrite
 
@@ -77,4 +77,39 @@ English version, analytics, cookie banner, form submission to the API, blog.
   - The form on `/kontakt/` is a disabled fieldset without `action`; FormSubmit is removed.
 
 ## Architect review
-(architect)
+Verdict: changes-requested
+
+Checked: `npm run build` passes (astro check 0/0/0, 7 pages), `npm audit --omit=dev` 0 vulnerabilities, no
+external URLs/trackers/`PUBLIC_*` in `dist/`, one inline script (734 B) on `/`, FormSubmit gone, form has no
+`action`, contact data matches the owner-approved values, no LinkedIn/photo. Lighthouse not re-run (not
+installed locally); implementer's numbers taken on trust. Code quality is good; the issues are copy governance.
+
+Findings (highest first):
+1. Medium, hard rule "text comes from doc/content": visible/indexed texts not in the copy and not in the
+   approval list: `src/content/site/ui.yaml:6` (homeLabel), `ui.yaml:28-30` and `ui.yaml:33-34` (meta
+   descriptions of /referencie/ and /kontakt/), `home.yaml:4` (home title), `src/pages/sluzby/[slug].astro:23`
+   (composed description), `src/content/case-studies/low-code-platforma-solvedio.md:20` (public note derived
+   from an editorial instruction). Fix: add every one of them to `doc/content/web-copy-sk.md:124` list so the
+   owner approves them explicitly, or drop them.
+2. Medium, ADR 0003: `doc/content/web-copy-sk.md:124-136` puts unapproved texts into the file that is by
+   definition approved. Merging the PR silently approves them. Fix: owner approves (then remove "(na
+   schválenie)" in the same PR) or move the list into the PR/task and keep only approved text in doc/content.
+3. Medium, acceptance criterion `T-001-astro-rewrite.md:36` and AGENTS.md workflow step 3: Netlify deploy
+   preview not checked (branch not pushed). Fix: push, open PR, verify preview routes, `/kontakt` without
+   slash redirects, and 404 page; then tick the boxes.
+4. Low: acceptance criteria checkboxes (`T-001-astro-rewrite.md:34-40`) are all unticked although most are
+   verified. Fix: tick what is verified, leave the preview open until checked.
+5. Low: `src/assets/brand/logo-combined.png` and `logo-glow.png` are unused (moved from `Assets/`, never
+   imported). Fix: delete them or state why they are kept.
+6. Low: `src/content/packages/data-reporting.md:20` links only the onboarding study, but the reference text
+   also names "SQL riešenia pre bankové interné aplikácie" (closest match: `system-spravy-obsahu-banka`).
+   Fix: add it or confirm with the owner.
+7. Low, UX: `src/pages/kontakt.astro:17` repeats the CTA text as lead directly above the same CTA button
+   (line 27). Fix: drop the lead or the duplicate (owner preference).
+
+Questions for the owner:
+- Approve the UI labels and the texts in finding 1 (including the Solvedio note and "Klienti sú
+  anonymizovaní podľa odvetvia a krajiny." shown publicly as a lead on `/` and `/referencie/`)?
+- `web-copy-sk.md:35` "stavebnú sporiteľňu v ČR" is more specific than case study 1 ("finančná inštitúcia v
+  ČR"); is that level of identification intended?
+- Canonical host is `https://inocube.sk` (no www): matches the Netlify primary domain?
