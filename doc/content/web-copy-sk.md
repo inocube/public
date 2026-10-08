@@ -32,7 +32,7 @@ alebo odpovedaním na stále rovnaké otázky klientov a kolegov.
 3. Produkčné nasadenie a integrácie.
 4. Prevádzka a ďalší rozvoj za mesačný paušál.
 
-**Referencia:** AI agent pre stavebnú sporiteľňu v ČR.
+**Referencia:** AI agent pre finančnú inštitúciu v ČR.
 
 ## Balíček 2: Dáta a reporting
 **Pre koho:** firmy, ktoré majú dáta rozhádzané v niekoľkých systémoch a mesačné reporty skladajú ručne

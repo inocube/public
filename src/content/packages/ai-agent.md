@@ -23,7 +23,7 @@ process:
   - Prevádzka a ďalší rozvoj za mesačný paušál.
 reference:
   label: Referencia
-  text: AI agent pre stavebnú sporiteľňu v ČR.
+  text: AI agent pre finančnú inštitúciu v ČR.
 caseStudies:
   - ai-agent-financna-institucia
 ---
