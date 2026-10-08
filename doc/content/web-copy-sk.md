@@ -113,4 +113,10 @@ Každá štúdia: výzva, riešenie, technológie, výsledok. Klienti sú anonym
   nie o podiele Inocube; na webe ich tak treba aj prezentovať.
 
 ## Kontakt a firemné údaje
-Chýbajú, dodá vlastník (e-mail, telefón, adresa, IČO, DIČ, LinkedIn, fotka). Pozri T-001 Open questions.
+- **Firma:** InoCube, Nešporova 1007/7, 927 01 Šaľa 1
+- **IČO:** 56282893 · **DIČ:** 2122282272 · **IČ DPH:** SK2122282272
+- **E-mail:** inocube@varga.slmail.me
+- **Telefón:** +421 910 579 485
+- **Slogan:** Innovation inside the Cube
+- LinkedIn a fotka vlastníka zatiaľ nie sú k dispozícii; na webe sa neuvádzajú (žiadne zástupné odkazy ani
+  obrázky).

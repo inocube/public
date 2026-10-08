@@ -1,6 +1,6 @@
 # T-001: Rebuild the site in Astro with the new Slovak copy
 
-- Status: ready (contact details pending, see Open questions)
+- Status: in-progress
 - Roadmap phase: 1
 - Branch: feat/T-001-astro-rewrite
 
@@ -45,7 +45,10 @@ English version, analytics, cookie banner, form submission to the API, blog.
 ## Open questions
 1. Owner: contact details for the footer and `/kontakt`: e-mail, phone, address, IČO, DIČ, LinkedIn URL,
    owner photo (optional). Use clearly marked placeholders until provided; do not merge with placeholders.
+   **Answered (owner, 2026-10-08):** details are in `doc/content/web-copy-sk.md`, section "Kontakt a firemné
+   údaje". LinkedIn and photo are not provided yet: leave them out entirely (no placeholders).
 2. Owner: keep the name "Inocube" with the tagline "Innovation inside the Cube" anywhere, or drop the tagline?
+   **Answered (owner, 2026-10-08):** keep the tagline "Innovation inside the Cube".
 
 ## Implementation notes
 (implementer)
