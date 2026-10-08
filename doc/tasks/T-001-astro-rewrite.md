@@ -50,6 +50,55 @@ English version, analytics, cookie banner, form submission to the API, blog.
 2. Owner: keep the name "Inocube" with the tagline "Innovation inside the Cube" anywhere, or drop the tagline?
    **Answered (owner, 2026-10-08):** keep the tagline "Innovation inside the Cube".
 
+## Texts pending owner approval
+These texts are on the site but are not in `doc/content/web-copy-sk.md` (which holds only approved copy,
+ADR 0003). They stay on the site until the owner decides; approved ones then move into the copy doc, rejected
+ones are changed or dropped. Labels taken verbatim from the copy (Pre koho, Čo dostanete, Ako prebieha
+spolupráca, Referencia, Výzva, Riešenie, Technológie, Výsledok, Prípadové štúdie, Kontakt a firemné údaje,
+E-mail, Telefón, IČO, DIČ, IČ DPH, Prečo Inocube) are not listed.
+
+Navigation and accessibility
+- `src/content/packages/ai-agent.md:5` nav label „AI agent“
+- `src/content/packages/aplikacie-na-mieru.md:5` nav label „Aplikácie na mieru“
+- `src/content/site/ui.yaml:11` nav „Referencie“ (the copy uses it only as a label in package 3)
+- `src/content/site/ui.yaml:12` nav „Kontakt“ (also the page title, `ui.yaml:32`, and footer heading, `ui.yaml:44`)
+- `src/content/site/ui.yaml:5` „Preskočiť na obsah“
+- `src/content/site/ui.yaml:6` „Inocube – úvodná stránka“ (accessible name of the logo link)
+- `src/content/site/ui.yaml:7` „Hlavná navigácia“
+- `src/content/site/ui.yaml:8-9` „Otvoriť menu“ · „Zavrieť menu“
+
+Page titles and meta descriptions (shown in search results)
+- `src/content/site/home.yaml:4` home title „Inocube – AI a dáta napojené na vaše existujúce systémy“ (brand +
+  hero heading)
+- Title pattern „<page title> | Inocube“: `src/pages/kontakt.astro:13`, `src/pages/referencie.astro:14`,
+  `src/pages/sluzby/[slug].astro:26`, `src/pages/404.astro:10`
+- `src/content/site/ui.yaml:28-30` description of `/referencie/`: „Prípadové štúdie Inocube: AI agent pre
+  finančnú inštitúciu v ČR, systém správy obsahu pre banku, digitálny nástup nového zamestnanca v banke
+  a low-code platforma Solvedio.“
+- `src/content/site/ui.yaml:33-34` description of `/kontakt/`: „Dohodnite si 30-minútovú konzultáciu zdarma.
+  Kontakt a firemné údaje Inocube.“
+- `src/pages/sluzby/[slug].astro:23` description of each package page, composed as „<názov balíčka>. Pre
+  koho: <text Pre koho>“
+
+Headings, links and notes
+- `src/content/site/home.yaml:21` home section heading „Služby“
+- `src/content/site/home.yaml:24` home process lead „Príklad: AI agent pre vašu firmu“
+- `src/content/site/ui.yaml:17` link „Viac o balíčku“
+- `src/content/site/ui.yaml:24` link „Celá prípadová štúdia“
+- `src/content/case-studies/low-code-platforma-solvedio.md:20` public note „Tieto čísla sú o platforme, nie
+  o podiele Inocube.“ (derived from the copy's editorial instruction, not verbatim copy)
+
+Contact page, footer, 404, e-mail
+- `src/content/site/ui.yaml:36` „Napíšte nám“
+- `src/content/site/ui.yaml:37-38` „Formulár zatiaľ nie je v prevádzke. Napíšte nám, prosím, e-mail alebo
+  zavolajte.“
+- `src/content/site/ui.yaml:39,41,42` form labels „Meno“ · „Správa“ · „Odoslať“
+- `src/content/site/ui.yaml:45` „Firemné údaje“ · `ui.yaml:46` „Stránky“ · `ui.yaml:52` „Všetky práva
+  vyhradené.“
+- `src/content/site/ui.yaml:54-56` 404: „Stránka sa nenašla“ · „Táto stránka neexistuje alebo bola
+  presunutá.“ · „Späť na úvodnú stránku“
+- `src/content/site/ui.yaml:57` subject of the CTA e-mail „Konzultácia zdarma“
+
 ## Implementation notes
 - Branch: `feat/T-001-astro-rewrite`. PR:
   https://github.com/inocube/public/compare/main...feat/T-001-astro-rewrite?expand=1 (to be opened by the
@@ -61,9 +110,10 @@ English version, analytics, cookie banner, form submission to the API, blog.
   other pages 99–100 perf, 100 in the rest. JS on every page: one inline script of 717 bytes. No external
   requests. Netlify deploy preview not checked (no PR yet).
 - Deviations and why:
-  - Short UI labels (navigation, "Služby", form notice, 404 text, accessibility labels) are not in the
-    approved copy. They are kept in `src/content/site/ui.yaml` / `home.yaml` and listed in
-    `doc/content/web-copy-sk.md` under "Navigácia a krátke texty rozhrania (na schválenie)".
+  - Short UI labels, page titles/meta descriptions and the Solvedio note are not in the approved copy. They
+    stay on the site (`src/content/site/ui.yaml`, `home.yaml`, package/case-study files) and are listed with
+    file:line under "Texts pending owner approval" above, not in `doc/content/` (ADR 0003: that folder holds
+    only approved copy).
   - Home "process" shows the AI-agent package steps (the only numbered process in the copy), labelled
     "Príklad: AI agent pre vašu firmu".
   - Case study 4: the copy's instruction that the figures are about the platform is shown as a note

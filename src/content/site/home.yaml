@@ -1,7 +1,7 @@
 # Source: doc/content/web-copy-sk.md ("Hero", "Prečo Inocube", "Prípadové štúdie").
-# Section headings marked "UI" are short labels, listed for owner approval in the T-001 PR.
+# Lines marked "UI" are short labels pending owner approval (doc/tasks/T-001-astro-rewrite.md).
 sk:
-  title: Inocube – AI a dáta napojené na vaše existujúce systémy
+  title: Inocube – AI a dáta napojené na vaše existujúce systémy # UI (composed)
   description: >-
     Navrhujeme a vyvíjame AI agentov, dátové riešenia a aplikácie na mieru pre firmy a finančné inštitúcie
     na Slovensku a v Česku. Bezpečne, s napojením na SAP, .NET a SQL a v súlade s AI Act.

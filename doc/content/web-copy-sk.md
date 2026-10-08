@@ -120,17 +120,3 @@ Každá štúdia: výzva, riešenie, technológie, výsledok. Klienti sú anonym
 - **Slogan:** Innovation inside the Cube
 - LinkedIn a fotka vlastníka zatiaľ nie sú k dispozícii; na webe sa neuvádzajú (žiadne zástupné odkazy ani
   obrázky).
-
-## Navigácia a krátke texty rozhrania (na schválenie)
-Krátke popisky, ktoré web potrebuje a v texte vyššie nie sú (T-001). Nie sú to tvrdenia o firme; vlastník
-ich môže zmeniť v `src/content/site/ui.yaml` a `src/content/site/home.yaml`.
-- Navigácia: AI agent · Dáta a reporting · Aplikácie na mieru · Referencie · Kontakt · Stránky (päta)
-- Nadpis sekcie balíčkov na úvodnej stránke: Služby
-- Pri procese na úvodnej stránke: „Príklad: AI agent pre vašu firmu“
-- Odkazy: Viac o balíčku · Celá prípadová štúdia
-- Kontakt: Napíšte nám · „Formulár zatiaľ nie je v prevádzke. Napíšte nám, prosím, e-mail alebo zavolajte.“ ·
-  Meno · E-mail · Správa · Odoslať
-- Päta: Firemné údaje · Všetky práva vyhradené.
-- Predmet e-mailu z tlačidla konzultácie: Konzultácia zdarma
-- Stránka 404: Stránka sa nenašla · Táto stránka neexistuje alebo bola presunutá. · Späť na úvodnú stránku
-- Prístupnosť: Preskočiť na obsah · Otvoriť menu · Zavrieť menu · Hlavná navigácia
