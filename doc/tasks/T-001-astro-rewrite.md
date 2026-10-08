@@ -1,6 +1,6 @@
 # T-001: Rebuild the site in Astro with the new Slovak copy
 
-- Status: in-progress
+- Status: review
 - Roadmap phase: 1
 - Branch: feat/T-001-astro-rewrite
 
@@ -51,7 +51,30 @@ English version, analytics, cookie banner, form submission to the API, blog.
    **Answered (owner, 2026-10-08):** keep the tagline "Innovation inside the Cube".
 
 ## Implementation notes
-(implementer)
+- Branch: `feat/T-001-astro-rewrite`. PR:
+  https://github.com/inocube/public/compare/main...feat/T-001-astro-rewrite?expand=1 (to be opened by the
+  owner; the Netlify deploy preview appears on the PR).
+- Stack: Astro 7.3.7, TypeScript strict, `@astrojs/sitemap`, Inter from `@fontsource-variable/inter` via
+  the Astro Fonts API (`local` provider). Node 22.12.0 pinned in `netlify.toml` and `.nvmrc`.
+- Verified locally: `npm run build` (astro check 0 errors/0 warnings, 7 pages); `npm run preview` served
+  all routes (200, unknown route 404). Lighthouse 12.8.2 mobile on the local preview: `/` 99/100/100/100;
+  other pages 99–100 perf, 100 in the rest. JS on every page: one inline script of 717 bytes. No external
+  requests. Netlify deploy preview not checked (no PR yet).
+- Deviations and why:
+  - Short UI labels (navigation, "Služby", form notice, 404 text, accessibility labels) are not in the
+    approved copy. They are kept in `src/content/site/ui.yaml` / `home.yaml` and listed in
+    `doc/content/web-copy-sk.md` under "Navigácia a krátke texty rozhrania (na schválenie)".
+  - Home "process" shows the AI-agent package steps (the only numbered process in the copy), labelled
+    "Príklad: AI agent pre vašu firmu".
+  - Case study 4: the copy's instruction that the figures are about the platform is shown as a note
+    ("Tieto čísla sú o platforme, nie o podiele Inocube."); the "na webe ich tak treba aj prezentovať"
+    half is an instruction, not site text.
+  - Header CTA omitted (the CTA text is too long for the header); the CTA is in the hero, on every package
+    page, at the bottom of pages and on `/kontakt/`.
+  - The hero image `src/assets/brand/cube.png` is cut from the light logo (`logo-light.png`, formerly
+    `Assets/2.png`) with the white background made transparent. Header/footer keep the old site's cube
+    mark as inline SVG.
+  - The form on `/kontakt/` is a disabled fieldset without `action`; FormSubmit is removed.
 
 ## Architect review
 (architect)
