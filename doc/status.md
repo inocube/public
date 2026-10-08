@@ -11,7 +11,9 @@ Last updated: 2026-10-08
 
 - T-001 Astro rewrite with the new copy and contact details: in review on branch
   `feat/T-001-astro-rewrite` (pages `/`, three package pages, `/referencie/`, `/kontakt/`). Once merged,
-  the Astro site replaces the old page.
+  the Astro site replaces the old page. Architect review round 1 is addressed; the owner still has to
+  approve the texts listed in the task under "Texts pending owner approval" and answer the owner questions.
+  The branch is not on origin yet (push refused with 403), so there is no Netlify deploy preview.
 
 ## Known issues
 

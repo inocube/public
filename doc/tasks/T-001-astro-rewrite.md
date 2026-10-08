@@ -1,6 +1,6 @@
 # T-001: Rebuild the site in Astro with the new Slovak copy
 
-- Status: changes-requested
+- Status: review
 - Roadmap phase: 1
 - Branch: feat/T-001-astro-rewrite
 
@@ -32,12 +32,14 @@ book a free 30-minute consultation. Built in Astro, deployed by Netlify.
 9. Docs: README commands, `doc/status.md`, `doc/architecture.md` (final page list).
 
 ## Acceptance criteria
-- [ ] All copy from `doc/content/web-copy-sk.md` appears on the site, nothing invented.
-- [ ] `npm run build` passes; Netlify deploy preview works.
-- [ ] Lighthouse ≥ 95 (performance, accessibility, best practices, SEO) on `/` mobile.
-- [ ] No client-side framework; total JS on `/` under 10 kB.
-- [ ] No external tracking; fonts and icons self-hosted or inlined.
-- [ ] PR explains Astro choices (content collections, islands, routing) for an Angular developer.
+- [x] All copy from `doc/content/web-copy-sk.md` appears on the site, nothing invented. (Short UI texts
+  that are not in the copy are flagged under "Texts pending owner approval".)
+- [ ] `npm run build` passes; Netlify deploy preview works. (Build passes. Deploy preview not checked: the
+  push of the branch to origin is refused with HTTP 403, so there is no PR and no preview yet.)
+- [x] Lighthouse ≥ 95 (performance, accessibility, best practices, SEO) on `/` mobile.
+- [x] No client-side framework; total JS on `/` under 10 kB.
+- [x] No external tracking; fonts and icons self-hosted or inlined.
+- [x] PR explains Astro choices (content collections, islands, routing) for an Angular developer.
 
 ## Out of scope
 English version, analytics, cookie banner, form submission to the API, blog.
@@ -122,10 +124,11 @@ Contact page, footer, 404, e-mail
   owner; the Netlify deploy preview appears on the PR).
 - Stack: Astro 7.3.7, TypeScript strict, `@astrojs/sitemap`, Inter from `@fontsource-variable/inter` via
   the Astro Fonts API (`local` provider). Node 22.12.0 pinned in `netlify.toml` and `.nvmrc`.
-- Verified locally: `npm run build` (astro check 0 errors/0 warnings, 7 pages); `npm run preview` served
+- Verified locally: `npm run build` (astro check 0 errors/0 warnings/0 hints, 7 pages); `npm run preview` served
   all routes (200, unknown route 404). Lighthouse 12.8.2 mobile on the local preview: `/` 99/100/100/100;
   other pages 99–100 perf, 100 in the rest. JS on every page: one inline script of 717 bytes. No external
-  requests. Netlify deploy preview not checked (no PR yet).
+  requests. Netlify deploy preview not checked: `git push` to origin is refused with HTTP 403, so the branch
+  is local only (architect finding 3 stays open until the owner pushes and opens the PR).
 - Deviations and why:
   - Short UI labels, page titles/meta descriptions and the Solvedio note are not in the approved copy. They
     stay on the site (`src/content/site/ui.yaml`, `home.yaml`, package/case-study files) and are listed with
@@ -142,6 +145,17 @@ Contact page, footer, 404, e-mail
     `Assets/2.png`) with the white background made transparent. Header/footer keep the old site's cube
     mark as inline SVG.
   - The form on `/kontakt/` is a disabled fieldset without `action`; FormSubmit is removed.
+- Architect review round 1 (changes requested), how each finding was handled:
+  1+2. Unapproved texts moved out of `doc/content/web-copy-sk.md` into "Texts pending owner approval" with
+     file:line (now including the home title, the /referencie/ and /kontakt/ meta descriptions, the
+     composed package description, the logo-link label and the Solvedio note). Texts stay on the site
+     until the owner decides; the PR lists them under "Owner approval needed".
+  3. Deploy preview: open, push blocked (403).
+  4. Verified acceptance criteria ticked; the deploy-preview item stays open.
+  5. Unused `src/assets/brand/logo-combined.png` and `logo-glow.png` deleted (no references in `src/`).
+  6. The copy does not say which case study „SQL riešenia pre bankové interné aplikácie“ is; not linked,
+     asked as owner question 2.
+  7. `/kontakt/` duplicated CTA unchanged; owner question 1.
 
 ## Architect review
 Verdict: changes-requested
