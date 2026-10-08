@@ -99,6 +99,23 @@ Contact page, footer, 404, e-mail
   presunutá.“ · „Späť na úvodnú stránku“
 - `src/content/site/ui.yaml:57` subject of the CTA e-mail „Konzultácia zdarma“
 
+## Owner questions (raised in review, not blocking)
+1. `/kontakt/` shows the CTA text „Dohodnite si 30-minútovú konzultáciu zdarma“ as the lead under the heading
+   (`src/pages/kontakt.astro:17`) and again on the button (`kontakt.astro:27`). Keep both, drop the lead, or
+   drop the button? Left unchanged until you decide (architect finding 7).
+2. Package „Dáta a reporting“ names two references: „integrácia na SAP HANA pri nástupe zamestnancov v banke“
+   (linked to the case study „Digitálny nástup nového zamestnanca v banke“) and „SQL riešenia pre bankové
+   interné aplikácie“. The copy does not say which case study the second one is. Is it „Systém správy obsahu
+   pre banku“ (Angular, C#, SQL)? If yes, it will be linked from `src/content/packages/data-reporting.md:20`
+   too; until then only the onboarding study is linked (architect finding 6).
+3. Approve, change or drop each text under "Texts pending owner approval" above.
+4. „Klienti sú anonymizovaní podľa odvetvia a krajiny.“ is verbatim in the copy (intro of „Prípadové štúdie“)
+   and is shown publicly as a lead on `/` (`src/content/site/home.yaml:28`) and `/referencie/`
+   (`src/content/site/ui.yaml:27`). Is it meant for visitors, or was it an editorial note?
+5. `doc/content/web-copy-sk.md:35` „stavebnú sporiteľňu v ČR“ is more specific than case study 1 („finančná
+   inštitúcia v ČR“). Is that level of identification intended?
+6. Canonical host is `https://inocube.sk` (no www). Does it match the Netlify primary domain?
+
 ## Implementation notes
 - Branch: `feat/T-001-astro-rewrite`. PR:
   https://github.com/inocube/public/compare/main...feat/T-001-astro-rewrite?expand=1 (to be opened by the
