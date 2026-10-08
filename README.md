@@ -3,22 +3,30 @@
 Company website of Inocube: AI and data connected to clients' existing systems. Hosted on Netlify.
 The backend for the contact form lives in [inocube/landing-backend](https://github.com/inocube/landing-backend).
 
-## State
+## Commands
 
-Today: a single static page (`index.html`, `style.css`, `script.js`, `Assets/`). It is being rebuilt with
-[Astro](https://astro.build) (task `doc/tasks/T-001-astro-rewrite.md`). After the rewrite this README gets
-the Astro commands.
+Requires Node 22.12+ (see `.nvmrc`). Run in PowerShell from the repo root:
 
-## Layout (after the Astro rewrite)
+| Command | What it does |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Dev server with hot reload at http://localhost:4321 |
+| `npm run build` | Type-check (`astro check`) and build the static site into `dist/` |
+| `npm run preview` | Serve the built `dist/` locally to check the production output |
+
+## Layout
 
 | Path | What it is |
 |---|---|
-| `src/pages/` | Routes (one file per page) |
-| `src/content/` | Page copy as Markdown content collections (SK now, EN later) |
-| `src/components/`, `src/layouts/` | UI building blocks |
-| `public/` | Static files copied as-is (images, favicon) |
+| `src/pages/` | Routes (one file per page; `sluzby/[slug].astro` generates one page per package) |
+| `src/content/` | Page copy as Markdown/YAML content collections, schemas in `src/content.config.ts` |
+| `src/components/`, `src/layouts/` | UI building blocks; `src/styles/global.css` holds the design tokens |
+| `src/assets/` | Images processed by Astro (resized, converted to WebP) |
+| `public/` | Static files copied as-is (favicon, `robots.txt`) |
 | `doc/` | Goals, architecture, status, roadmap, decisions, agent tasks. Start at [`doc/README.md`](doc/README.md) |
 | `AGENTS.md` | Rules for AI coding agents working in this repo |
+
+To change a text, edit `doc/content/` first (owner-approved copy), then the matching file in `src/content/`.
 
 ## Deploy
 

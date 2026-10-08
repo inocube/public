@@ -1,0 +1,48 @@
+---
+import { getCompany, getUi } from '../lib/content';
+
+const ui = await getUi();
+const company = await getCompany();
+const ids = [
+  { label: ui.footer.ico, value: company.ico },
+  { label: ui.footer.dic, value: company.dic },
+  { label: ui.footer.icDph, value: company.icDph },
+];
+---
+
+<div class="company">
+  <p class="company__address">
+    {company.legalName}<br />
+    {company.address.street}<br />
+    {company.address.postalCode} {company.address.city}
+  </p>
+  <dl class="company__ids">
+    {
+      ids.map((id) => (
+        <div>
+          <dt>{id.label}:</dt>
+          <dd>{id.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</div>
+
+<style>
+  .company__address {
+    margin-bottom: 0.75rem;
+  }
+
+  .company__ids {
+    margin: 0;
+  }
+
+  .company__ids div {
+    display: flex;
+    gap: 0.375rem;
+  }
+
+  .company__ids dd {
+    margin: 0;
+  }
+</style>

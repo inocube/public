@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { caseStudyUrl, getUi } from '../lib/content';
+
+interface Props {
+  entry: CollectionEntry<'caseStudies'>;
+}
+const { entry } = Astro.props;
+const ui = await getUi();
+---
+
+<article class="teaser card">
+  <h3>
+    <a href={caseStudyUrl(entry.id)}>{entry.data.title}</a>
+  </h3>
+  <p class="visually-hidden">{ui.caseStudy.technologies}:</p>
+  <ul class="tags">
+    {entry.data.technologies.map((tech) => <li>{tech}</li>)}
+  </ul>
+</article>
+
+<style>
+  .teaser {
+    position: relative;
+    transition: border-color var(--transition);
+  }
+
+  .teaser:hover,
+  .teaser:focus-within {
+    border-color: rgba(132, 204, 22, 0.5);
+  }
+
+  .teaser h3 {
+    font-size: 1.125rem;
+  }
+
+  .teaser a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  /* The whole card is clickable, the link text stays the accessible name. */
+  .teaser a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .teaser a:focus-visible {
+    outline: none;
+  }
+
+  .teaser:has(a:focus-visible) {
+    outline: 3px solid var(--color-green-bright);
+    outline-offset: 3px;
+  }
+</style>

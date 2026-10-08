@@ -1,0 +1,15 @@
+# Source: doc/content/web-copy-sk.md, "Kontakt a firemné údaje".
+# LinkedIn and the owner photo are intentionally absent until the owner provides them.
+main:
+  brand: Inocube
+  legalName: InoCube
+  tagline: Innovation inside the Cube
+  address:
+    street: Nešporova 1007/7
+    postalCode: "927 01"
+    city: Šaľa 1
+  ico: "56282893"
+  dic: "2122282272"
+  icDph: SK2122282272
+  email: inocube@varga.slmail.me
+  phone: "+421 910 579 485"

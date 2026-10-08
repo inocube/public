@@ -1,0 +1,19 @@
+---
+interface Props {
+  id: string;
+  heading: string;
+  lead?: string | undefined;
+}
+const { id, heading, lead } = Astro.props;
+---
+
+<header class="section-heading">
+  <h2 id={id}>{heading}</h2>
+  {lead && <p class="lead">{lead}</p>}
+</header>
+
+<style>
+  .section-heading {
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+</style>

@@ -1,0 +1,30 @@
+# Source: doc/content/web-copy-sk.md ("Hero", "Prečo Inocube", "Prípadové štúdie").
+# Lines marked "UI" are short labels pending owner approval (doc/tasks/T-001-astro-rewrite.md).
+sk:
+  title: Inocube – AI a dáta napojené na vaše existujúce systémy # UI (composed)
+  description: >-
+    Navrhujeme a vyvíjame AI agentov, dátové riešenia a aplikácie na mieru pre firmy a finančné inštitúcie
+    na Slovensku a v Česku. Bezpečne, s napojením na SAP, .NET a SQL a v súlade s AI Act.
+  hero:
+    heading: AI a dáta napojené na vaše existujúce systémy
+    lead: >-
+      Navrhujeme a vyvíjame AI agentov, dátové riešenia a aplikácie na mieru pre firmy a finančné inštitúcie
+      na Slovensku a v Česku. Bezpečne, s napojením na SAP, .NET a SQL a v súlade s AI Act.
+    cta: Dohodnite si 30-minútovú konzultáciu zdarma
+  reasons:
+    heading: Prečo Inocube
+    items:
+      - "AI v produkcii, nie len prezentácie: náš AI agent beží vo finančnej inštitúcii v ČR."
+      - "Rozumieme podnikovým systémom: SAP HANA, .NET, SQL, JIRA, bankové prostredie."
+      - "Malý senior tím: hovoríte priamo s tým, kto riešenie navrhuje aj programuje."
+  packages:
+    heading: Služby # UI
+  process:
+    heading: Ako prebieha spolupráca
+    lead: "Príklad: AI agent pre vašu firmu" # UI
+    package: ai-agent
+  caseStudies:
+    heading: Prípadové štúdie
+    lead: Klienti sú anonymizovaní podľa odvetvia a krajiny.
+  cta:
+    heading: Dohodnite si 30-minútovú konzultáciu zdarma

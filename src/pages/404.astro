@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { getCompany, getUi } from '../lib/content';
+
+const ui = await getUi();
+const company = await getCompany();
+---
+
+<BaseLayout title={`${ui.notFound.title} | ${company.brand}`} description={ui.notFound.text} noindex>
+  <section class="section">
+    <div class="container">
+      <h1>{ui.notFound.title}</h1>
+      <p class="lead">{ui.notFound.text}</p>
+      <Button href="/">{ui.notFound.back}</Button>
+    </div>
+  </section>
+</BaseLayout>

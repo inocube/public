@@ -1,0 +1,57 @@
+# Short interface labels (navigation, headings, accessibility texts). They are not marketing claims.
+# Labels that also appear in doc/content/web-copy-sk.md are copied from there; the others are not approved
+# copy yet and are listed in doc/tasks/T-001-astro-rewrite.md ("Texts pending owner approval").
+sk:
+  skipLink: Preskočiť na obsah
+  homeLabel: Inocube – úvodná stránka
+  mainNav: Hlavná navigácia
+  menuOpen: Otvoriť menu
+  menuClose: Zavrieť menu
+  nav:
+    caseStudies: Referencie
+    contact: Kontakt
+  package:
+    forWhom: Pre koho
+    deliverables: Čo dostanete
+    process: Ako prebieha spolupráca
+    more: Viac o balíčku
+    relatedCaseStudies: Prípadové štúdie
+  caseStudy:
+    challenge: Výzva
+    solution: Riešenie
+    technologies: Technológie
+    result: Výsledok
+    more: Celá prípadová štúdia
+  caseStudiesPage:
+    title: Prípadové štúdie
+    lead: Klienti sú anonymizovaní podľa odvetvia a krajiny.
+    description: >-
+      Prípadové štúdie Inocube: AI agent pre finančnú inštitúciu v ČR, systém správy obsahu pre banku,
+      digitálny nástup nového zamestnanca v banke a low-code platforma Solvedio.
+  contactPage:
+    title: Kontakt
+    description: >-
+      Dohodnite si 30-minútovú konzultáciu zdarma. Kontakt a firemné údaje Inocube.
+    companyHeading: Kontakt a firemné údaje
+    formHeading: Napíšte nám
+    formNotice: >-
+      Formulár zatiaľ nie je v prevádzke. Napíšte nám, prosím, e-mail alebo zavolajte.
+    formName: Meno
+    formEmail: E-mail
+    formMessage: Správa
+    formSubmit: Odoslať
+  footer:
+    contactHeading: Kontakt
+    companyHeading: Firemné údaje
+    navHeading: Stránky
+    email: E-mail
+    phone: Telefón
+    ico: IČO
+    dic: DIČ
+    icDph: IČ DPH
+    rights: Všetky práva vyhradené.
+  notFound:
+    title: Stránka sa nenašla
+    text: Táto stránka neexistuje alebo bola presunutá.
+    back: Späť na úvodnú stránku
+  ctaMailSubject: Konzultácia zdarma

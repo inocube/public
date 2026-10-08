@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getUi, inlineMarkdown } from '../lib/content';
+
+interface Props {
+  entry: CollectionEntry<'caseStudies'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const ui = await getUi();
+const headingId = `${entry.id}-heading`;
+---
+
+<article id={entry.id} class="study card" aria-labelledby={headingId}>
+  <p class="study__number" aria-hidden="true">0{data.order}</p>
+  <h2 id={headingId}>{data.title}</h2>
+  <dl class="study__parts">
+    <div>
+      <dt>{ui.caseStudy.challenge}</dt>
+      <dd class="sentence-case" set:html={inlineMarkdown(data.challenge)} />
+    </div>
+    <div>
+      <dt>{ui.caseStudy.solution}</dt>
+      <dd class="sentence-case">{data.solution}</dd>
+    </div>
+    <div>
+      <dt>{ui.caseStudy.technologies}</dt>
+      <dd>
+        <ul class="tags">{data.technologies.map((tech) => <li>{tech}</li>)}</ul>
+      </dd>
+    </div>
+    <div>
+      <dt>{ui.caseStudy.result}</dt>
+      <dd>
+        <p class="sentence-case">{data.result}</p>
+        {data.note && <p class="study__note">{data.note}</p>}
+      </dd>
+    </div>
+  </dl>
+</article>
+
+<style>
+  .study {
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+  }
+
+  .study__number {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    color: var(--color-green-bright);
+  }
+
+  .study__parts {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+  }
+
+  .study__parts dt {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .study__parts dd {
+    margin: 0;
+  }
+
+  .study__parts dd p:last-child {
+    margin-bottom: 0;
+  }
+
+  .study__note {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getEntries } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import CaseStudyTeaser from '../../components/CaseStudyTeaser.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { getCompany, getHome, getPackages, getUi, mailtoHref } from '../../lib/content';
+
+// Runs once at build time: one HTML file per package (/sluzby/ai-agent/ ...).
+export const getStaticPaths = (async () => {
+  const packages = await getPackages();
+  return packages.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { data } = entry;
+const ui = await getUi();
+const home = await getHome();
+const company = await getCompany();
+const studies = await getEntries(data.caseStudies);
+const description = `${data.title}. ${ui.package.forWhom}: ${data.forWhom}`;
+---
+
+<BaseLayout title={`${data.title} | ${company.brand}`} description={description}>
+  <article>
+    <header class="section page-head">
+      <div class="container">
+        <h1>{data.title}</h1>
+        <p class="lead"><strong>{ui.package.forWhom}:</strong> {data.forWhom}</p>
+        <Button href={mailtoHref(company.email, ui.ctaMailSubject)}>{home.hero.cta}</Button>
+      </div>
+    </header>
+
+    <section class="section section--alt" aria-labelledby="deliverables-heading">
+      <div class="container">
+        <h2 id="deliverables-heading">{ui.package.deliverables}</h2>
+        <ul class="deliverables">
+          {data.deliverables.map((item) => <li class="card">{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="process-heading">
+      <div class="container">
+        <h2 id="process-heading">{ui.package.process}</h2>
+        <ProcessSteps steps={data.process} />
+        <p class="reference"><strong>{data.reference.label}:</strong> {data.reference.text}</p>
+      </div>
+    </section>
+
+    {
+      studies.length > 0 && (
+        <section class="section section--alt" aria-labelledby="related-heading">
+          <div class="container">
+            <h2 id="related-heading">{ui.package.relatedCaseStudies}</h2>
+            <div class="related">
+              {studies.map((study) => (
+                <CaseStudyTeaser entry={study} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </article>
+
+  <CtaBanner heading={home.cta.heading} />
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-bottom: clamp(2rem, 5vw, 3rem);
+  }
+
+  .page-head .lead {
+    margin-bottom: 2rem;
+  }
+
+  .page-head .lead strong {
+    color: var(--color-text);
+  }
+
+  .deliverables {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+
+  .deliverables li {
+    margin: 0;
+    border-left: 3px solid var(--color-green);
+  }
+
+  .reference {
+    margin: 2rem 0 0;
+    color: var(--color-text-muted);
+  }
+
+  .reference strong {
+    color: var(--color-text);
+  }
+
+  .related {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+</style>
