@@ -12,6 +12,7 @@
   --color-text-muted: #a5b4c8;
   --color-link: #7dd3fc;
   --color-on-accent: #0c1222;
+  --color-error: #fca5a5;
   --gradient-brand: linear-gradient(135deg, var(--color-blue), var(--color-green));
 
   --font-body: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;

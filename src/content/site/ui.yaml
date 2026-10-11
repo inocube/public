@@ -40,6 +40,22 @@ sk:
     formEmail: E-mail
     formMessage: Správa
     formSubmit: Odoslať
+    # Texts below: proposed in T-002, pending owner approval (doc/content/web-copy-sk.md, "Kontaktný formulár").
+    # {email} and {phone} become links to the company e-mail and phone.
+    formNoscript: >-
+      Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte na {phone}.
+    formSending: Odosielam…
+    formSendingStatus: Odosielame vašu správu…
+    formSuccessHeading: Ďakujeme, vaša správa je odoslaná
+    formSuccessText: Ozveme sa vám čo najskôr na e-mail, ktorý ste uviedli.
+    formInvalid: Skontrolujte, prosím, označené polia.
+    formFieldErrors:
+      name: Vyplňte, prosím, meno (najviac 200 znakov).
+      email: Zadajte, prosím, platnú e-mailovú adresu.
+      message: Napíšte, prosím, správu (najviac 5 000 znakov).
+    formError: >-
+      Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
+    formHoneypot: Toto pole nevypĺňajte
   footer:
     contactHeading: Kontakt
     companyHeading: Firemné údaje

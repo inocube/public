@@ -99,6 +99,17 @@ const ui = defineCollection({
       formEmail: z.string(),
       formMessage: z.string(),
       formSubmit: z.string(),
+      /** May contain {email} and {phone}; rendered as links. */
+      formNoscript: z.string(),
+      formSending: z.string(),
+      formSendingStatus: z.string(),
+      formSuccessHeading: z.string(),
+      formSuccessText: z.string(),
+      formInvalid: z.string(),
+      formFieldErrors: z.object({ name: z.string(), email: z.string(), message: z.string() }),
+      /** May contain {email}; rendered as a link. */
+      formError: z.string(),
+      formHoneypot: z.string(),
     }),
     footer: z.object({
       contactHeading: z.string(),
