@@ -1,6 +1,6 @@
 # T-002: Connect the contact form to the leads API
 
-- Status: review
+- Status: changes-requested
 - Roadmap phase: 2b (backend counterpart: `inocube/landing-backend` T-004)
 - Branch: feat/T-002-contact-form-api
 
@@ -92,4 +92,42 @@ Proposed in `doc/content/web-copy-sk.md`, section „Kontaktný formulár (NÁVR
   - Content-Type `application/json` triggers a CORS preflight: T-004 must answer `OPTIONS /leads`.
 
 ## Architect review
-(architect)
+Verdict: changes-requested (round 1, 2026-10-11). `npm ci` (0 vulnerabilities) and `npm run build` pass, astro
+check 0/0/0, with and without `PUBLIC_API_BASE_URL` (trailing `/` stripped correctly). Code is sound: no XSS path
+(API `details` are only matched against a fixed field list, never rendered; `withContactLinks` escapes), no
+logging, PII only in the POST body, double submit guarded, every state (201/400/429/500/network/timeout) ends in
+a defined message with focus handled. The blockers are go-live conditions, not code quality.
+
+Findings (most severe first):
+1. GDPR, blocker: `src/pages/kontakt.astro:46` collects name, e-mail and free text with no Art. 13 information
+   (controller, purpose, legal basis, retention, rights). Merging plus setting the Netlify variable makes the
+   form live. Fix: one-line notice under the button (owner-approved text in `doc/content/`), linking to a privacy
+   page or listing the basics inline; or keep the variable unset in production until phase 2 delivers it.
+2. ADR 0003, merge gate: `doc/content/web-copy-sk.md:124` holds unapproved NÁVRH texts and `src/content/site/
+   ui.yaml:43-59` ships them. The task sanctioned this, but the PR must not merge until the owner approves the
+   texts and the NÁVRH heading/note and the ui.yaml comment are removed.
+3. Deploy previews hit production: CORS will allow `deploy-preview-*` origins, so every preview with the same
+   variable writes real leads (and notifications) into the prod backend. Fix: document a separate value for the
+   Netlify deploy-preview context (staging API, or unset), see Question 2.
+4. `kontakt.astro:14`: the URL is not validated. A value without scheme becomes a relative fetch to inocube.sk,
+   `http://` is blocked as mixed content; both fail silently as the generic error in production. Fix: parse with
+   `new URL()` at build time and fail the build unless it is `https:` (allow `http://127.0.0.1`/`localhost`).
+5. `kontakt.astro:46`: the form has no `method`/`action`, so any native submit (e.g. a future script regression
+   before `preventDefault`) would GET name/e-mail/message into the URL. Fix: `method="post"` and `action` pointing
+   at the API (or `#`), defence in depth.
+6. `kontakt.astro:292`: `AbortSignal.timeout` is missing before Safari 16 / iOS 15; it throws inside `try`, so those
+   visitors always get the generic error. Fix: `AbortController` + `setTimeout`, or accept and note it.
+7. Docs: `README.md:39` and `.env.example:5-6` say a missing variable shows the e-mail/phone fallback; it shows
+   `formNotice` (`kontakt.astro:92`, no links). `.env.example:5` says "phase 2b", `doc/roadmap.md` calls it
+   phase 3 (2b is the backend's phase). Align wording.
+8. Minor UX/copy: button „Odosielam…“ (1st person singular) vs status „Odosielame…“; the no-JS fallback text
+   flashes briefly before the module runs (`kontakt.astro:45`), acceptable trade-off for covering script failure.
+9. Honeypot is correct (off-screen, `aria-hidden`, `tabindex=-1`, always sent). Residual risk: some password
+   managers/autofill ignore `autocomplete="off"`; the API should drop silently (201) so a false positive is a
+   lost lead with no error, which the owner should know.
+Not verified by me: real API/CORS preflight (`OPTIONS /leads` must be answered by T-004), Lighthouse, preview.
+
+Questions for the owner
+1. Privacy: inline one-line GDPR notice now, or keep the form off in production until the privacy page (phase 2)?
+2. Deploy previews: separate `PUBLIC_API_BASE_URL` for the deploy-preview context, or accept test leads in prod?
+3. Approve or change the NÁVRH texts (including „Odosielam…“ vs „Odosielame…“).
