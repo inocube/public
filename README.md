@@ -32,3 +32,8 @@ To change a text, edit `doc/content/` first (owner-approved copy), then the matc
 
 Netlify builds every push: pull requests get a deploy preview, `main` goes live. `main` is protected;
 changes go through pull requests.
+
+The contact form needs the Netlify environment variable `PUBLIC_API_BASE_URL` (Site configuration →
+Environment variables), e.g. `https://i6r0knhf3m.execute-api.eu-central-1.amazonaws.com/Prod` without a
+trailing slash. It is read at build time and is public (it ends up in the HTML), so it is not a secret.
+Without it the page shows the e-mail/phone fallback. After changing it, trigger a new deploy.

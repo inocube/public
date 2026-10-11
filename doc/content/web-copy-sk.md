@@ -120,3 +120,19 @@ Každá štúdia: výzva, riešenie, technológie, výsledok. Klienti sú anonym
 - **Slogan:** Innovation inside the Cube
 - LinkedIn a fotka vlastníka zatiaľ nie sú k dispozícii; na webe sa neuvádzajú (žiadne zástupné odkazy ani
   obrázky).
+
+## Kontaktný formulár (NÁVRH, čaká na schválenie vlastníkom)
+Navrhnuté v T-002; zatiaľ neschválené. Po schválení sa táto poznámka odstráni, pri zamietnutí sa texty upravia.
+`{email}` a `{telefón}` sa na webe zobrazia ako odkazy na firemný e-mail a telefón.
+- **Bez JavaScriptu:** Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte
+  na {telefón}.
+- **Tlačidlo počas odosielania:** Odosielam…
+- **Stav počas odosielania:** Odosielame vašu správu…
+- **Úspech (nadpis):** Ďakujeme, vaša správa je odoslaná
+- **Úspech (text):** Ozveme sa vám čo najskôr na e-mail, ktorý ste uviedli.
+- **Chybné polia (súhrn):** Skontrolujte, prosím, označené polia.
+- **Chyba v poli Meno:** Vyplňte, prosím, meno (najviac 200 znakov).
+- **Chyba v poli E-mail:** Zadajte, prosím, platnú e-mailovú adresu.
+- **Chyba v poli Správa:** Napíšte, prosím, správu (najviac 5 000 znakov).
+- **Všeobecná chyba:** Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
+- **Skryté pole proti robotom (návštevník ho nevidí):** Toto pole nevypĺňajte
