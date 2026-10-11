@@ -12,6 +12,24 @@ const page = ui.contactPage;
 // Read at build time. PUBLIC_ variables are public by design (the URL is visible in the browser anyway).
 // Without it (e.g. a local build without .env) the page shows the e-mail/phone fallback instead of a form.
 const apiBase = (import.meta.env.PUBLIC_API_BASE_URL ?? '').trim().replace(/\/+$/, '');
+if (apiBase) assertApiUrl(apiBase);
+
+/** Fails the build on a value the browser could not use (relative URL, or http:// = mixed content). */
+function assertApiUrl(value: string) {
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new Error(`PUBLIC_API_BASE_URL must be an absolute https:// URL, got "${value}".`);
+  }
+  const local = url.hostname === '127.0.0.1' || url.hostname === 'localhost';
+  if (url.protocol !== 'https:' && !(url.protocol === 'http:' && local)) {
+    throw new Error(
+      `PUBLIC_API_BASE_URL must use https:// (http:// only for 127.0.0.1 or localhost), got "${value}".`,
+    );
+  }
+}
+const privacyHtml = withContactLinks(page.formPrivacy, company);
 const fallbackHtml = withContactLinks(page.formNoscript, company);
 const errorHtml = withContactLinks(page.formError, company);
 const fields = [
@@ -43,7 +61,8 @@ const fields = [
               <>
                 {/* Visible until the script runs: with JavaScript off (or broken) visitors get e-mail/phone. */}
                 <p class="notice" data-form-fallback set:html={fallbackHtml} />
-                <form class="form" data-lead-form data-api={apiBase} hidden>
+                {/* method="post" without action: if the script ever fails to stop a native submit, data never lands in a URL. */}
+                <form class="form" method="post" data-lead-form data-api={apiBase} hidden>
                   {fields.map((f) => (
                     <div class="field">
                       <label for={f.id}>{f.label}</label>
@@ -75,10 +94,11 @@ const fields = [
                   <button type="submit" class="btn btn--primary" data-sending={page.formSending}>
                     {page.formSubmit}
                   </button>
+                  <p class="privacy" set:html={privacyHtml} />
                 </form>
                 {/* One live region for every state; the script fills it from the templates below. */}
                 <div class="form-status" role="status" aria-live="polite" tabindex="-1" data-form-status />
-                <template data-msg="sending">{page.formSendingStatus}</template>
+                <template data-msg="sending">{page.formSending}</template>
                 <template data-msg="invalid">{page.formInvalid}</template>
                 <template data-msg="error">
                   <p set:html={errorHtml} />
@@ -168,6 +188,12 @@ const fields = [
 
   .form button {
     justify-self: start;
+  }
+
+  .privacy {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
   }
 
   .form button:disabled {
@@ -284,17 +310,22 @@ const fields = [
 
       let invalid: Field[] = [];
       let ok = false;
+      // AbortController + setTimeout instead of AbortSignal.timeout(), which Safari < 16 lacks.
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), 15000);
       try {
         const res = await fetch(`${form.dataset.api}/leads`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
-          signal: AbortSignal.timeout(15000),
+          signal: controller.signal,
         });
         ok = res.ok;
         if (res.status === 400) invalid = await rejectedFields(res);
       } catch {
         // Network error, timeout or CORS rejection: handled as a generic error below.
+      } finally {
+        window.clearTimeout(timer);
       }
 
       form.removeAttribute('aria-busy');

@@ -102,7 +102,6 @@ const ui = defineCollection({
       /** May contain {email} and {phone}; rendered as links. */
       formNoscript: z.string(),
       formSending: z.string(),
-      formSendingStatus: z.string(),
       formSuccessHeading: z.string(),
       formSuccessText: z.string(),
       formInvalid: z.string(),
@@ -110,6 +109,8 @@ const ui = defineCollection({
       /** May contain {email}; rendered as a link. */
       formError: z.string(),
       formHoneypot: z.string(),
+      /** GDPR Art. 13 notice under the submit button; may contain {email}. */
+      formPrivacy: z.string(),
     }),
     footer: z.object({
       contactHeading: z.string(),

@@ -45,7 +45,6 @@ sk:
     formNoscript: >-
       Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte na {phone}.
     formSending: Odosielam…
-    formSendingStatus: Odosielame vašu správu…
     formSuccessHeading: Ďakujeme, vaša správa je odoslaná
     formSuccessText: Ozveme sa vám čo najskôr na e-mail, ktorý ste uviedli.
     formInvalid: Skontrolujte, prosím, označené polia.
@@ -56,6 +55,10 @@ sk:
     formError: >-
       Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
     formHoneypot: Toto pole nevypĺňajte
+    formPrivacy: >-
+      Údaje z formulára spracúva InoCube, IČO 56282893, na vybavenie vášho dopytu (opatrenia pred uzavretím
+      zmluvy, oprávnený záujem) do jeho vybavenia, najviac 2 roky. Máte právo na prístup, opravu, vymazanie,
+      obmedzenie, námietku a sťažnosť na Úrad na ochranu osobných údajov SR; kontakt: {email}.
   footer:
     contactHeading: Kontakt
     companyHeading: Firemné údaje
