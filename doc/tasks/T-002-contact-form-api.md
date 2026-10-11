@@ -1,6 +1,6 @@
 # T-002: Connect the contact form to the leads API
 
-- Status: review
+- Status: approved
 - Roadmap phase: 2b (backend counterpart: `inocube/landing-backend` T-004)
 - Branch: feat/T-002-contact-form-api
 
@@ -82,42 +82,34 @@ Proposed in `doc/content/web-copy-sk.md` („Kontaktný formulár (NÁVRH…)“
   2 and 9 are owner decisions (Owner steps 2; honeypot false positives are silently dropped by the API).
 
 ## Architect review
-Verdict: changes-requested (round 1, 2026-10-11). `npm ci` (0 vulnerabilities) and `npm run build` pass, astro
-check 0/0/0, with and without `PUBLIC_API_BASE_URL` (trailing `/` stripped correctly). Code is sound: no XSS path
-(API `details` are only matched against a fixed field list, never rendered; `withContactLinks` escapes), no
-logging, PII only in the POST body, double submit guarded, every state (201/400/429/500/network/timeout) ends in
-a defined message with focus handled. The blockers are go-live conditions, not code quality.
+Verdict: approved (round 2, 2026-10-11; reviewed e15e0b6, 79d1851). Merge is still gated by Owner steps 1–3
+(production-only variable, text approval incl. `formPrivacy`, backend T-004 with `OPTIONS /leads`).
+`npm run build` passes (astro check 0/0/0) with no variable and with `https://…/Prod/`. The build fails as
+intended for `example.test` and `http://api.example.test`.
 
-Findings (most severe first):
-1. GDPR, blocker: `src/pages/kontakt.astro:46` collects name, e-mail and free text with no Art. 13 information
-   (controller, purpose, legal basis, retention, rights). Merging plus setting the Netlify variable makes the
-   form live. Fix: one-line notice under the button (owner-approved text in `doc/content/`), linking to a privacy
-   page or listing the basics inline; or keep the variable unset in production until phase 2 delivers it.
-2. ADR 0003, merge gate: `doc/content/web-copy-sk.md:124` holds unapproved NÁVRH texts and `src/content/site/
-   ui.yaml:43-59` ships them. The task sanctioned this, but the PR must not merge until the owner approves the
-   texts and the NÁVRH heading/note and the ui.yaml comment are removed.
-3. Deploy previews hit production: CORS will allow `deploy-preview-*` origins, so every preview with the same
-   variable writes real leads (and notifications) into the prod backend. Fix: document a separate value for the
-   Netlify deploy-preview context (staging API, or unset), see Question 2.
-4. `kontakt.astro:14`: the URL is not validated. A value without scheme becomes a relative fetch to inocube.sk,
-   `http://` is blocked as mixed content; both fail silently as the generic error in production. Fix: parse with
-   `new URL()` at build time and fail the build unless it is `https:` (allow `http://127.0.0.1`/`localhost`).
-5. `kontakt.astro:46`: the form has no `method`/`action`, so any native submit (e.g. a future script regression
-   before `preventDefault`) would GET name/e-mail/message into the URL. Fix: `method="post"` and `action` pointing
-   at the API (or `#`), defence in depth.
-6. `kontakt.astro:292`: `AbortSignal.timeout` is missing before Safari 16 / iOS 15; it throws inside `try`, so those
-   visitors always get the generic error. Fix: `AbortController` + `setTimeout`, or accept and note it.
-7. Docs: `README.md:39` and `.env.example:5-6` say a missing variable shows the e-mail/phone fallback; it shows
-   `formNotice` (`kontakt.astro:92`, no links). `.env.example:5` says "phase 2b", `doc/roadmap.md` calls it
-   phase 3 (2b is the backend's phase). Align wording.
-8. Minor UX/copy: button „Odosielam…“ (1st person singular) vs status „Odosielame…“; the no-JS fallback text
-   flashes briefly before the module runs (`kontakt.astro:45`), acceptable trade-off for covering script failure.
-9. Honeypot is correct (off-screen, `aria-hidden`, `tabindex=-1`, always sent). Residual risk: some password
-   managers/autofill ignore `autocomplete="off"`; the API should drop silently (201) so a false positive is a
-   lost lead with no error, which the owner should know.
-Not verified by me: real API/CORS preflight (`OPTIONS /leads` must be answered by T-004), Lighthouse, preview.
+Round 1 findings:
+- 1 GDPR: fixed. `formPrivacy` sits under the button (`kontakt.astro:97`), escaped, e-mail rendered as a link.
+- 3 Previews: fixed in the docs (README, task Owner steps): the variable is set for Production only, so previews
+  show the notice. This only holds if the owner sets the variable's scope correctly in Netlify.
+- 4 URL check: fixed (`kontakt.astro:15-31`, `new URL`, https, or http only for localhost/127.0.0.1).
+- 5 `method="post"` with no action: fixed. A native submit POSTs to `/kontakt/` and nothing reaches the URL.
+- 6 Timeout: fixed with AbortController + setTimeout, cleared in `finally`. No regression.
+- 7 Docs (README, `.env.example`, architecture, roadmap phase): fixed. 8: „Odosielam…“ unified, the separate
+  status text was removed from the schema/YAML, and no references to it remain.
+- 2 and 9 are owner items.
+
+Remaining (non-blocking):
+- `kontakt.astro:13`: the comment still says a missing variable shows "the e-mail/phone fallback"; it shows
+  `formNotice`. Fix it when convenient.
+- `formPrivacy` as a short Art. 13 notice is legally sensible: it names the controller and contact, the purpose,
+  the legal bases (Art. 6(1)(b)/(f)), retention, the rights and the supervisory authority (ÚOOÚ SR). Before
+  approving it, the owner should consider adding:
+  - the right to data portability (Art. 20 applies to the 6(1)(b) basis);
+  - the recipients (Art. 13(1)(e)), e.g. „sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt)“;
+  - the address, or the full legal name, of the controller.
+  Once the privacy page (phase 2) exists, link it from the notice.
 
 Questions for the owner
-1. Privacy: inline one-line GDPR notice now, or keep the form off in production until the privacy page (phase 2)?
-2. Deploy previews: separate `PUBLIC_API_BASE_URL` for the deploy-preview context, or accept test leads in prod?
-3. Approve or change the NÁVRH texts (including „Odosielam…“ vs „Odosielame…“).
+1. Is InoCube a legal entity, or a trade name of a sole trader? If it is a sole trader, the controller named in
+   `formPrivacy` should be the person (name + „InoCube“).
+2. Add portability and recipients (AWS, EU region) to `formPrivacy` before approving it?
