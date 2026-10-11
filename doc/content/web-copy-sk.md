@@ -135,7 +135,8 @@ Navrhnuté v T-002; zatiaľ neschválené. Po schválení sa táto poznámka ods
 - **Chyba v poli Správa:** Napíšte, prosím, správu (najviac 5 000 znakov).
 - **Všeobecná chyba:** Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
 - **Skryté pole proti robotom (návštevník ho nevidí):** Toto pole nevypĺňajte
-- **Informácia o spracúvaní údajov (pod tlačidlom Odoslať):** Údaje z formulára spracúva InoCube, IČO 56282893,
-  na vybavenie vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho vybavenia, najviac
-  2 roky. Máte právo na prístup, opravu, vymazanie, obmedzenie, námietku a sťažnosť na Úrad na ochranu
+- **Informácia o spracúvaní údajov (pod tlačidlom Odoslať):** Údaje z formulára spracúva InoCube, Nešporova
+  1007/7, 927 01 Šaľa, IČO 56282893, na vybavenie vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený
+  záujem) do jeho vybavenia, najviac 2 roky. Sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt).
+  Máte právo na prístup, opravu, vymazanie, obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu
   osobných údajov SR; kontakt: {email}.

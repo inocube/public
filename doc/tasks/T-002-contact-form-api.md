@@ -47,7 +47,7 @@ CAPTCHA, analytics, newsletter, backend changes.
 3. Merge only after backend T-004 (CORS incl. `OPTIONS /leads`) is deployed.
 
 ## Texts pending owner approval
-Proposed in `doc/content/web-copy-sk.md` („Kontaktný formulár (NÁVRH…)“), used in `src/content/site/ui.yaml:45-61`.
+Proposed in `doc/content/web-copy-sk.md` („Kontaktný formulár (NÁVRH…)“), used in `src/content/site/ui.yaml:45-62`.
 - `formNoscript` „Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte na {phone}.“
 - `formSending` „Odosielam…“ (button and status) · `formInvalid` „Skontrolujte, prosím, označené polia.“
 - `formSuccessHeading` „Ďakujeme, vaša správa je odoslaná“ · `formSuccessText` „Ozveme sa vám čo najskôr na
@@ -56,10 +56,11 @@ Proposed in `doc/content/web-copy-sk.md` („Kontaktný formulár (NÁVRH…)“
   „Napíšte, prosím, správu (najviac 5 000 znakov).“
 - `formError` „Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.“
 - `formHoneypot` „Toto pole nevypĺňajte“ (hidden honeypot label, not visible or read out)
-- `formPrivacy` (GDPR čl. 13, under the button) „Údaje z formulára spracúva InoCube, IČO 56282893, na vybavenie
-  vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho vybavenia, najviac 2 roky. Máte právo
-  na prístup, opravu, vymazanie, obmedzenie, námietku a sťažnosť na Úrad na ochranu osobných údajov SR;
-  kontakt: {email}.“
+- `formPrivacy` (GDPR čl. 13, under the button) „Údaje z formulára spracúva InoCube, Nešporova 1007/7, 927 01
+  Šaľa, IČO 56282893, na vybavenie vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho
+  vybavenia, najviac 2 roky. Sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt). Máte právo na
+  prístup, opravu, vymazanie, obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu osobných údajov
+  SR; kontakt: {email}.“
 
 ## Implementation notes
 - Branch `feat/T-002-contact-form-api`; PR opened by the orchestrator. Page: `src/pages/kontakt.astro`.

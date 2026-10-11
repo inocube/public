@@ -10,7 +10,8 @@ const company = await getCompany();
 const page = ui.contactPage;
 
 // Read at build time. PUBLIC_ variables are public by design (the URL is visible in the browser anyway).
-// Without it (e.g. a local build without .env) the page shows the e-mail/phone fallback instead of a form.
+// Without it (e.g. deploy previews or a local build without .env) the page shows the notice „Formulár zatiaľ
+// nie je v prevádzke…“ instead of a form; with it, the URL must be https:// (checked below).
 const apiBase = (import.meta.env.PUBLIC_API_BASE_URL ?? '').trim().replace(/\/+$/, '');
 if (apiBase) assertApiUrl(apiBase);
 
