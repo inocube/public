@@ -126,8 +126,7 @@ Navrhnuté v T-002; zatiaľ neschválené. Po schválení sa táto poznámka ods
 `{email}` a `{telefón}` sa na webe zobrazia ako odkazy na firemný e-mail a telefón.
 - **Bez JavaScriptu:** Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte
   na {telefón}.
-- **Tlačidlo počas odosielania:** Odosielam…
-- **Stav počas odosielania:** Odosielame vašu správu…
+- **Tlačidlo a stav počas odosielania:** Odosielam…
 - **Úspech (nadpis):** Ďakujeme, vaša správa je odoslaná
 - **Úspech (text):** Ozveme sa vám čo najskôr na e-mail, ktorý ste uviedli.
 - **Chybné polia (súhrn):** Skontrolujte, prosím, označené polia.
@@ -136,3 +135,7 @@ Navrhnuté v T-002; zatiaľ neschválené. Po schválení sa táto poznámka ods
 - **Chyba v poli Správa:** Napíšte, prosím, správu (najviac 5 000 znakov).
 - **Všeobecná chyba:** Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
 - **Skryté pole proti robotom (návštevník ho nevidí):** Toto pole nevypĺňajte
+- **Informácia o spracúvaní údajov (pod tlačidlom Odoslať):** Údaje z formulára spracúva InoCube, IČO 56282893,
+  na vybavenie vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho vybavenia, najviac
+  2 roky. Máte právo na prístup, opravu, vymazanie, obmedzenie, námietku a sťažnosť na Úrad na ochranu
+  osobných údajov SR; kontakt: {email}.

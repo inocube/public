@@ -35,5 +35,8 @@ changes go through pull requests.
 
 The contact form needs the Netlify environment variable `PUBLIC_API_BASE_URL` (Site configuration →
 Environment variables), e.g. `https://i6r0knhf3m.execute-api.eu-central-1.amazonaws.com/Prod` without a
-trailing slash. It is read at build time and is public (it ends up in the HTML), so it is not a secret.
-Without it the page shows the e-mail/phone fallback. After changing it, trigger a new deploy.
+trailing slash. Set it **only for the Production deploy context**: deploy previews then build without it and
+show the notice „Formulár zatiaľ nie je v prevádzke…“ instead of the form, so a preview never writes leads
+into the production backend. The value is read at build time and is public (it ends up in the HTML), so it
+is not a secret; it must be `https://` (`http://` only for `127.0.0.1`/`localhost`) or the build fails.
+After changing it, trigger a new deploy.

@@ -17,8 +17,9 @@ mobile menu and the contact form.
 - Copy: content collections in `src/content/` (`packages`, `caseStudies` as Markdown frontmatter; `home`,
   `ui`, `company` as YAML keyed by locale), derived from `doc/content/`.
 - CTA: `mailto:` link to the company e-mail; the form on `/kontakt/` is the second channel.
-- Contact form: an inline Astro `<script>` (~1.6 kB) posts JSON to `${PUBLIC_API_BASE_URL}/leads` (read at
-  build time into `data-api`). Without JS, or without the variable, the e-mail/phone fallback is shown.
+- Contact form: an inline Astro `<script>` (~1.7 kB) posts JSON to `${PUBLIC_API_BASE_URL}/leads` (read at
+  build time into `data-api`, set for the Netlify Production context only). Without JS it shows the
+  e-mail/phone fallback; without the variable the notice „Formulár zatiaľ nie je v prevádzke…“.
 - SEO: per-page title/description, canonical, Open Graph, `@astrojs/sitemap` (`/sitemap-index.xml`),
   `robots.txt`, `lang="sk"`.
 - Fonts: Inter variable from `@fontsource-variable/inter`, self-hosted through the Astro Fonts API. No
