@@ -1,17 +1,17 @@
 # Status
 
-Last updated: 2026-10-11
+Last updated: 2026-10-12
 
 ## Live
 
 - Astro site from T-001 (merged to `main` in PR #2): `/`, three package pages, `/referencie/`, `/kontakt/`.
-  Contact form on `/kontakt/` is still disabled on `main`; visitors use the e-mail/phone CTA.
+- Contact form on `/kontakt/` sends to `POST /leads` (T-002, PR #3, 2026-10-12). Owner tested it on
+  inocube.sk: the lead was stored and the notification e-mail arrived. `PUBLIC_API_BASE_URL` is set in Netlify
+  for the Production context only, so deploy previews show the "not in operation" notice.
 
 ## In progress
 
-- T-002 contact form connected to `POST /leads`: in review on branch `feat/T-002-contact-form-api`.
-  Backend T-004 (CORS for `inocube.sk`) is deployed and form texts are approved (2026-10-12). Needs the
-  Netlify variable `PUBLIC_API_BASE_URL`, meant for the Production context only.
+- Nothing. Next phase: owner to choose (roadmap).
 
 ## Known issues
 
