@@ -24,7 +24,7 @@ The form on `/kontakt` sends the enquiry to `POST /leads` and tells the visitor 
    mapped to the inputs, generic error for 429/500/network with the e-mail address as fallback.
 4. Works without JavaScript failing loudly: if JS is off, show the e-mail/phone fallback instead of a dead form.
 5. Proposed Slovak texts for the new states in `doc/content/web-copy-sk.md`, listed under
-   "Texts pending owner approval" in this task.
+   "Texts" in this task (approved 2026-10-12).
 6. `.env.example` comment updated (phase 2b, not 3); README note on the Netlify variable.
 
 ## Acceptance criteria
@@ -43,11 +43,11 @@ CAPTCHA, analytics, newsletter, backend changes.
 ## Owner steps
 1. Netlify: set `PUBLIC_API_BASE_URL` = `https://i6r0knhf3m.execute-api.eu-central-1.amazonaws.com/Prod` for the
    **Production** deploy context only (previews then show the notice and never write prod leads).
-2. Approve or change the texts below; then drop the NÁVRH marker in the copy doc and the `ui.yaml` comment.
+2. ~~Approve the texts below~~ Done 2026-10-12 (legal name confirmed as InoCube s.r.o.).
 3. Merge only after backend T-004 (CORS incl. `OPTIONS /leads`) is deployed.
 
-## Texts pending owner approval
-Proposed in `doc/content/web-copy-sk.md` („Kontaktný formulár (NÁVRH…)“), used in `src/content/site/ui.yaml:45-62`.
+## Texts (approved by the owner on 2026-10-12)
+In `doc/content/web-copy-sk.md` („Kontaktný formulár“), used in `src/content/site/ui.yaml:45-62`.
 - `formNoscript` „Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte na {phone}.“
 - `formSending` „Odosielam…“ (button and status) · `formInvalid` „Skontrolujte, prosím, označené polia.“
 - `formSuccessHeading` „Ďakujeme, vaša správa je odoslaná“ · `formSuccessText` „Ozveme sa vám čo najskôr na
@@ -56,7 +56,7 @@ Proposed in `doc/content/web-copy-sk.md` („Kontaktný formulár (NÁVRH…)“
   „Napíšte, prosím, správu (najviac 5 000 znakov).“
 - `formError` „Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.“
 - `formHoneypot` „Toto pole nevypĺňajte“ (hidden honeypot label, not visible or read out)
-- `formPrivacy` (GDPR čl. 13, under the button) „Údaje z formulára spracúva InoCube, Nešporova 1007/7, 927 01
+- `formPrivacy` (GDPR čl. 13, under the button) „Údaje z formulára spracúva InoCube s.r.o., Nešporova 1007/7, 927 01
   Šaľa, IČO 56282893, na vybavenie vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho
   vybavenia, najviac 2 roky. Sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt). Máte právo na
   prístup, opravu, vymazanie, obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu osobných údajov

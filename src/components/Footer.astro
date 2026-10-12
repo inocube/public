@@ -7,6 +7,8 @@ const ui = await getUi();
 const company = await getCompany();
 const packages = await getPackages();
 const year = new Date().getFullYear();
+// "InoCube s.r.o." already ends with a period; avoid "s.r.o.." before the rights text.
+const copyrightName = company.legalName.replace(/\.$/, '');
 ---
 
 <footer class="footer">
@@ -46,7 +48,7 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="container footer__bottom">
-    <p>&copy; {year} {company.legalName}. {ui.footer.rights}</p>
+    <p>&copy; {year} {copyrightName}. {ui.footer.rights}</p>
   </div>
 </footer>
 

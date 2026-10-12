@@ -40,7 +40,7 @@ sk:
     formEmail: E-mail
     formMessage: Správa
     formSubmit: Odoslať
-    # Texts below: proposed in T-002, pending owner approval (doc/content/web-copy-sk.md, "Kontaktný formulár").
+    # Texts below: from T-002, approved by the owner on 2026-10-12 (doc/content/web-copy-sk.md, "Kontaktný formulár").
     # {email} and {phone} become links to the company e-mail and phone.
     formNoscript: >-
       Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte na {phone}.
@@ -56,7 +56,7 @@ sk:
       Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
     formHoneypot: Toto pole nevypĺňajte
     formPrivacy: >-
-      Údaje z formulára spracúva InoCube, Nešporova 1007/7, 927 01 Šaľa, IČO 56282893, na vybavenie vášho
+      Údaje z formulára spracúva InoCube s.r.o., Nešporova 1007/7, 927 01 Šaľa, IČO 56282893, na vybavenie vášho
       dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho vybavenia, najviac 2 roky.
       Sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt). Máte právo na prístup, opravu, vymazanie,
       obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu osobných údajov SR; kontakt: {email}.

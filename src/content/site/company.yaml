@@ -2,7 +2,7 @@
 # LinkedIn and the owner photo are intentionally absent until the owner provides them.
 main:
   brand: Inocube
-  legalName: InoCube
+  legalName: InoCube s.r.o.
   tagline: Innovation inside the Cube
   address:
     street: Nešporova 1007/7
