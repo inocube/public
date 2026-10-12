@@ -1,6 +1,6 @@
 # T-003: Privacy policy and imprint pages
 
-- Status: changes-requested
+- Status: review
 - Roadmap phase: 2 (legal pages part; team section stays out of scope)
 - Branch: feat/T-003-legal-pages
 
@@ -53,10 +53,11 @@ Owner to provide (placeholders until then, do not block the PR on them). Registe
 form were provided on 2026-10-12 and are in the imprint.
 - Confirm the processor list (AWS, Netlify, SimpleLogin/Proton) is complete. In particular: which provider
   hosts the mailbox SimpleLogin forwards to? If it is not Proton, it is another recipient to list.
-- Placeholder `[DOPLNIŤ: ako dlho Netlify uchováva záznamy servera]`: how long Netlify keeps request logs
-  on the current plan (check the Netlify plan or DPA).
-- Does the backend (API Gateway, Lambda, CloudWatch logs) store the visitor's IP address or other request
-  data? If yes, the policy must list it under „Aké údaje spracúvame“ with its retention.
+- Placeholder `[DOPLNIŤ: poskytovateľ e-mailovej schránky a krajina]` (architect finding 1): owner to name
+  the mailbox provider.
+- Closed: Netlify log retention is stated as a criterion (art. 13(2)(a) allows criteria) instead of a
+  number Netlify does not publish for this plan. Backend logs hold no IP or personal data (API Gateway has
+  no access logging; Lambda logs only lead id and AWS error codes), so nothing to add.
 - The policy applies the form retention („do vybavenia dopytu, najdlhšie 2 roky“) also to e-mails and phone
   calls, and lists e-mail/phone contact as a data source. Confirm the owner can keep that promise.
 - Approve the texts in `doc/content/web-copy-sk.md`, „Právne stránky“ (both pages, the form link text and the
@@ -118,3 +119,10 @@ line; no em-dashes. `[legal].astro` follows the `sluzby/[slug].astro` pattern; i
 
 Questions for the owner: which provider hosts the mailbox SimpleLogin forwards to; Netlify log retention on
 the current plan (placeholder line 79); confirm Netlify, Inc. is active on the DPF list.
+
+### Orchestrator follow-up (after review)
+- Finding 1 (blocking) fixed: the policy no longer says form data stays only in the EU; it names the e-mail
+  copy via SimpleLogin and leaves the mailbox provider as a placeholder for the owner.
+- Finding 6 fixed: comment on the `legal` collection in `src/content.config.ts`.
+- Findings 2-5 optional, not done in this PR. Finding 3 (enforcing the 2-year limit) is a backend task
+  candidate (DynamoDB TTL).

@@ -217,12 +217,15 @@ Ak nám to uloží zákon, údaje poskytneme aj orgánom verejnej moci.
 - **Švajčiarsko (Proton AG):** Európska komisia rozhodla, že Švajčiarsko zaručuje primeranú úroveň ochrany
   osobných údajov, preto na prenos nie sú potrebné ďalšie záruky.
 
-Údaje z kontaktného formulára ukladáme v Európskej únii.
+Databáza so správami z kontaktného formulára je v Európskej únii (Frankfurt). Kópiu každej správy však
+dostávame aj e-mailom, ktorý prechádza službou SimpleLogin vo Švajčiarsku do našej e-mailovej schránky
+[DOPLNIŤ: poskytovateľ e-mailovej schránky a krajina].
 
 #### Ako dlho údaje uchovávame
 
 - **Údaje z formulára, e-mailov a telefonátov:** do vybavenia vášho dopytu, najdlhšie 2 roky.
-- **Technické záznamy servera:** [DOPLNIŤ: ako dlho Netlify uchováva záznamy servera].
+- **Technické záznamy servera:** uchováva ich poskytovateľ hostingu Netlify len počas doby potrebnej na prevádzku a bezpečnosť
+  hostingu podľa svojich pravidiel; my ich nevyhodnocujeme.
 
 #### Vaše práva
 

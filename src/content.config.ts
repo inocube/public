@@ -37,6 +37,8 @@ const caseStudies = defineCollection({
 });
 
 /** Legal pages (privacy policy, imprint): the Markdown body is the page text, one route per file. */
+// File names become top-level URLs (src/pages/[legal].astro): never name one like an existing page
+// (kontakt, referencie, index, 404), or that page silently wins.
 const legal = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/legal' }),
   schema: z.object({
