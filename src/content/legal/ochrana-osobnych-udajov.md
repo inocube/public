@@ -1,5 +1,5 @@
 ---
-# Source: doc/content/web-copy-sk.md, "Ochrana osobných údajov" (NÁVRH, čaká na schválenie vlastníkom).
+# Source: doc/content/web-copy-sk.md, "Právne stránky" > "Ochrana osobných údajov" (NÁVRH, čaká na schválenie vlastníkom).
 order: 1
 title: Ochrana osobných údajov
 description: >-

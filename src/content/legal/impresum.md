@@ -1,5 +1,5 @@
 ---
-# Source: doc/content/web-copy-sk.md, "Impresum" (NÁVRH, čaká na schválenie vlastníkom).
+# Source: doc/content/web-copy-sk.md, "Právne stránky" > "Impresum" (NÁVRH, čaká na schválenie vlastníkom).
 order: 2
 title: Impresum
 description: >-
