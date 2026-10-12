@@ -60,6 +60,8 @@ sk:
       dopytu (opatrenia pred uzavretím zmluvy, oprávnený záujem) do jeho vybavenia, najviac 2 roky.
       Sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt). Máte právo na prístup, opravu, vymazanie,
       obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu osobných údajov SR; kontakt: {email}.
+    # From T-003, pending owner approval (doc/content/web-copy-sk.md, "Právne stránky").
+    formPrivacyLink: Podrobnosti o ochrane osobných údajov
   footer:
     contactHeading: Kontakt
     companyHeading: Firemné údaje

@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import CompanyDetails from '../components/CompanyDetails.astro';
-import { getCompany, getHome, getUi, mailtoHref, telHref, withContactLinks } from '../lib/content';
+import { getCompany, getHome, getUi, mailtoHref, privacyUrl, telHref, withContactLinks } from '../lib/content';
 
 const ui = await getUi();
 const home = await getHome();
@@ -95,7 +95,9 @@ const fields = [
                   <button type="submit" class="btn btn--primary" data-sending={page.formSending}>
                     {page.formSubmit}
                   </button>
-                  <p class="privacy" set:html={privacyHtml} />
+                  <p class="privacy">
+                    <Fragment set:html={privacyHtml} /> <a href={privacyUrl}>{page.formPrivacyLink}</a>
+                  </p>
                 </form>
                 {/* One live region for every state; the script fills it from the templates below. */}
                 <div class="form-status" role="status" aria-live="polite" tabindex="-1" data-form-status />

@@ -24,8 +24,16 @@ export async function getCaseStudies() {
   return entries.sort((a, b) => a.data.order - b.data.order);
 }
 
+export async function getLegalPages() {
+  const entries = await getCollection('legal');
+  return entries.sort((a, b) => a.data.order - b.data.order);
+}
+
 export const packageUrl = (id: string) => `/sluzby/${id}/`;
 export const caseStudyUrl = (id: string) => `/referencie/#${id}`;
+/** Legal pages live at the root: /ochrana-osobnych-udajov/, /impresum/. */
+export const legalUrl = (id: string) => `/${id}/`;
+export const privacyUrl = legalUrl('ochrana-osobnych-udajov');
 
 export function mailtoHref(email: string, subject?: string) {
   return subject ? `mailto:${email}?subject=${encodeURIComponent(subject)}` : `mailto:${email}`;
