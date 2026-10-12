@@ -1,6 +1,6 @@
 # T-003: Privacy policy and imprint pages
 
-- Status: review
+- Status: changes-requested
 - Roadmap phase: 2 (legal pages part; team section stays out of scope)
 - Branch: feat/T-003-legal-pages
 
@@ -88,4 +88,33 @@ form were provided on 2026-10-12 and are in the imprint.
   (not pushed).
 
 ## Architect review
-(architect: verdict approved / changes-requested, findings with file:line)
+Verdict: changes-requested
+
+Checked: `git diff main...HEAD`; `npm run build` passes (astro check 0/0/0, 9 pages). Both pages are in
+`sitemap-0.xml` with unique title, description and canonical. `dist/` has no external scripts, fonts,
+stylesheets or cookie/storage code. No new dependencies. Texts match `doc/content/web-copy-sk.md` line by
+line; no em-dashes. `[legal].astro` follows the `sluzby/[slug].astro` pattern; it only emits the ids from
+`src/content/legal/`, and static routes (index, kontakt, referencie, 404) win over it, so no collision today.
+
+1. Blocking. `src/content/legal/ochrana-osobnych-udajov.md:74` (and copy doc): „Údaje z kontaktného formulára
+   ukladáme v Európskej únii.“ is not true as written: the notification e-mail with the form data goes through
+   Proton/SimpleLogin (CH) into a mailbox whose provider is not named (line 61-63, Open question 1). Fix: say
+   the form database is in the EU (Frankfurt) and a copy arrives by e-mail in our mailbox; name the mailbox
+   provider among the recipients (if it is Proton Mail, state that Proton AG also stores the e-mails, CH).
+2. Optional. Open question 3 can be closed: API Gateway has no access logging; Lambda logs only the lead id
+   and AWS error codes (no IP, no personal data), CloudWatch retention 30 days. Nothing needs adding under
+   „Aké údaje spracúvame“; optionally one line on the 30-day operational logs (pseudonymous lead id).
+3. Optional. `ochrana-osobnych-udajov.md:78`: the 2-year limit is a promise. Confirm it is enforced (DynamoDB
+   TTL or a scheduled delete, mailbox clean-up); if not, add a backend task. Consider noting that data of a
+   client who signs a contract is kept longer under accounting/tax law (separate purpose and basis).
+4. Optional. `src/content/legal/impresum.md:22`: add the SOI inspektorát address (Nitra) for completeness.
+   § 4 items otherwise complete (name, seat, IČO, register entry, IČ DPH, e-mail, phone).
+5. Optional. `src/content/site/ui.yaml:61` approved form notice names only AWS as processor; with the new
+   link it is acceptable, but it now lists fewer recipients than the policy. Owner may shorten it to point
+   to the policy at the next copy revision.
+6. Optional. `src/pages/[legal].astro:8-12`: a future legal file named like a static page (e.g. `kontakt.md`)
+   would be silently shadowed. A one-line comment in `content.config.ts` next to the `legal` collection
+   (ids must not match top-level routes) is enough.
+
+Questions for the owner: which provider hosts the mailbox SimpleLogin forwards to; Netlify log retention on
+the current plan (placeholder line 79); confirm Netlify, Inc. is active on the DPF list.
