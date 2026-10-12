@@ -12,10 +12,11 @@ mobile menu and the contact form.
 | `/sluzby/ai-agent/`, `/sluzby/data-reporting/`, `/sluzby/aplikacie-na-mieru/` | `src/pages/sluzby/[slug].astro` | One page per package |
 | `/referencie/` | `src/pages/referencie.astro` | All four case studies (anchors per study) |
 | `/kontakt/` | `src/pages/kontakt.astro` | Contact and company details, contact form (`POST /leads`) |
+| `/ochrana-osobnych-udajov/`, `/impresum/` | `src/pages/[legal].astro` | Privacy policy and imprint (Markdown in `src/content/legal/`) |
 | `/404.html` | `src/pages/404.astro` | Not-found page (noindex) |
 
-- Copy: content collections in `src/content/` (`packages`, `caseStudies` as Markdown frontmatter; `home`,
-  `ui`, `company` as YAML keyed by locale), derived from `doc/content/`.
+- Copy: content collections in `src/content/` (`packages`, `caseStudies` as Markdown frontmatter, `legal`
+  as Markdown body; `home`, `ui`, `company` as YAML keyed by locale), derived from `doc/content/`.
 - CTA: `mailto:` link to the company e-mail; the form on `/kontakt/` is the second channel.
 - Contact form: an inline Astro `<script>` (~1.7 kB) posts JSON to `${PUBLIC_API_BASE_URL}/leads` (read at
   build time into `data-api`, set for the Netlify Production context only). Without JS it shows the
