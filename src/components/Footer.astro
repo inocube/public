@@ -1,11 +1,21 @@
 ---
 import LogoMark from './LogoMark.astro';
 import CompanyDetails from './CompanyDetails.astro';
-import { getCompany, getPackages, getUi, mailtoHref, packageUrl, telHref } from '../lib/content';
+import {
+  getCompany,
+  getLegalPages,
+  getPackages,
+  getUi,
+  legalUrl,
+  mailtoHref,
+  packageUrl,
+  telHref,
+} from '../lib/content';
 
 const ui = await getUi();
 const company = await getCompany();
 const packages = await getPackages();
+const legalPages = await getLegalPages();
 const year = new Date().getFullYear();
 // "InoCube s.r.o." already ends with a period; avoid "s.r.o.." before the rights text.
 const copyrightName = company.legalName.replace(/\.$/, '');
@@ -43,6 +53,13 @@ const copyrightName = company.legalName.replace(/\.$/, '');
         }
         <li><a href="/referencie/">{ui.nav.caseStudies}</a></li>
         <li><a href="/kontakt/">{ui.nav.contact}</a></li>
+        {
+          legalPages.map((p) => (
+            <li>
+              <a href={legalUrl(p.id)}>{p.data.title}</a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>

@@ -11,11 +11,12 @@ Last updated: 2026-10-12
 
 ## In progress
 
-- Nothing. Next phase: owner to choose (roadmap).
+- T-003 privacy policy `/ochrana-osobnych-udajov/` and imprint `/impresum/`, linked from the footer and the
+  form notice: texts approved by the owner on 2026-10-12, PR #5 waits for merge.
+  Follow-up candidate: enforce the 2-year limit (DynamoDB TTL in the backend, mailbox clean-up).
 
 ## Known issues
 
-- Contact form has only a one-line GDPR notice (approved); a privacy page is roadmap phase 2.
 - Texts listed in T-001 under "Texts pending owner approval" are still pending.
 - LinkedIn and owner photo are not on the site yet (not provided).
 - The local parent folder `FE\` contains an empty `.git` directory that is not part of this repo; it can be

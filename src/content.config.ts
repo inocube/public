@@ -36,6 +36,19 @@ const caseStudies = defineCollection({
   }),
 });
 
+/** Legal pages (privacy policy, imprint): the Markdown body is the page text, one route per file. */
+// File names become top-level URLs (src/pages/[legal].astro): never name one like an existing page
+// (kontakt, referencie, index, 404), or that page silently wins.
+const legal = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/legal' }),
+  schema: z.object({
+    /** Order in the footer. */
+    order: z.number().int(),
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 const home = defineCollection({
   loader: file('./src/content/site/home.yaml'),
   schema: z.object({
@@ -111,6 +124,8 @@ const ui = defineCollection({
       formHoneypot: z.string(),
       /** GDPR Art. 13 notice under the submit button; may contain {email}. */
       formPrivacy: z.string(),
+      /** Link to the privacy policy page, shown after formPrivacy. */
+      formPrivacyLink: z.string(),
     }),
     footer: z.object({
       contactHeading: z.string(),
@@ -128,4 +143,4 @@ const ui = defineCollection({
   }),
 });
 
-export const collections = { packages, caseStudies, home, company, ui };
+export const collections = { packages, caseStudies, legal, home, company, ui };

@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCompany, getLegalPages } from '../lib/content';
+
+// Runs once at build time: one HTML file per Markdown file in src/content/legal/
+// (/ochrana-osobnych-udajov/, /impresum/). Static routes such as /kontakt/ take precedence over this one.
+export const getStaticPaths = (async () => {
+  const pages = await getLegalPages();
+  return pages.map((entry) => ({ params: { legal: entry.id }, props: { entry } }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const company = await getCompany();
+// The Markdown body is rendered at build time to plain HTML; no JavaScript reaches the browser.
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | ${company.brand}`} description={entry.data.description}>
+  <article class="section">
+    <div class="container legal">
+      <h1>{entry.data.title}</h1>
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Readable line length for long legal text. */
+  .legal {
+    max-width: 48rem;
+  }
+
+  .legal :global(h2) {
+    font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+    margin-top: 2.5rem;
+  }
+
+  .legal :global(ul) {
+    margin: 0 0 1rem;
+  }
+
+  .legal :global(strong) {
+    color: var(--color-text);
+  }
+</style>
