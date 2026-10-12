@@ -48,3 +48,13 @@ export function inlineMarkdown(text: string) {
     (_match, label: string, href: string) => `<a href="${href}" rel="noopener">${label}</a>`,
   );
 }
+
+/**
+ * Escapes a text and turns the placeholders {email} and {phone} into mailto:/tel: links.
+ * The result is safe for `set:html`.
+ */
+export function withContactLinks(text: string, contact: { email: string; phone: string }) {
+  return escapeHtml(text)
+    .replace('{email}', `<a href="${escapeHtml(mailtoHref(contact.email))}">${escapeHtml(contact.email)}</a>`)
+    .replace('{phone}', `<a href="${escapeHtml(telHref(contact.phone))}">${escapeHtml(contact.phone)}</a>`);
+}

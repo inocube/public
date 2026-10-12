@@ -113,10 +113,30 @@ Každá štúdia: výzva, riešenie, technológie, výsledok. Klienti sú anonym
   nie o podiele Inocube; na webe ich tak treba aj prezentovať.
 
 ## Kontakt a firemné údaje
-- **Firma:** InoCube, Nešporova 1007/7, 927 01 Šaľa 1
+- **Firma:** InoCube s.r.o., Nešporova 1007/7, 927 01 Šaľa 1
 - **IČO:** 56282893 · **DIČ:** 2122282272 · **IČ DPH:** SK2122282272
 - **E-mail:** inocube@varga.slmail.me
 - **Telefón:** +421 910 579 485
 - **Slogan:** Innovation inside the Cube
 - LinkedIn a fotka vlastníka zatiaľ nie sú k dispozícii; na webe sa neuvádzajú (žiadne zástupné odkazy ani
   obrázky).
+
+## Kontaktný formulár
+Navrhnuté v T-002, schválené vlastníkom 12. 10. 2026.
+`{email}` a `{telefón}` sa na webe zobrazia ako odkazy na firemný e-mail a telefón.
+- **Bez JavaScriptu:** Formulár potrebuje zapnutý JavaScript. Napíšte nám, prosím, na {email} alebo zavolajte
+  na {telefón}.
+- **Tlačidlo a stav počas odosielania:** Odosielam…
+- **Úspech (nadpis):** Ďakujeme, vaša správa je odoslaná
+- **Úspech (text):** Ozveme sa vám čo najskôr na e-mail, ktorý ste uviedli.
+- **Chybné polia (súhrn):** Skontrolujte, prosím, označené polia.
+- **Chyba v poli Meno:** Vyplňte, prosím, meno (najviac 200 znakov).
+- **Chyba v poli E-mail:** Zadajte, prosím, platnú e-mailovú adresu.
+- **Chyba v poli Správa:** Napíšte, prosím, správu (najviac 5 000 znakov).
+- **Všeobecná chyba:** Správu sa nepodarilo odoslať. Skúste to, prosím, neskôr alebo nám napíšte na {email}.
+- **Skryté pole proti robotom (návštevník ho nevidí):** Toto pole nevypĺňajte
+- **Informácia o spracúvaní údajov (pod tlačidlom Odoslať):** Údaje z formulára spracúva InoCube s.r.o., Nešporova
+  1007/7, 927 01 Šaľa, IČO 56282893, na vybavenie vášho dopytu (opatrenia pred uzavretím zmluvy, oprávnený
+  záujem) do jeho vybavenia, najviac 2 roky. Sprostredkovateľ: Amazon Web Services, dáta v EÚ (Frankfurt).
+  Máte právo na prístup, opravu, vymazanie, obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu
+  osobných údajov SR; kontakt: {email}.

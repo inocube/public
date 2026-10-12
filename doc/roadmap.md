@@ -4,7 +4,7 @@
 |---|---|---|
 | 1 | Astro rewrite with new Slovak copy | next (T-001) |
 | 2 | Contact details, team, legal pages (privacy policy, imprint) | planned |
-| 3 | Contact form connected to backend `POST /leads` | planned, after backend phase 2b |
+| 3 | Contact form connected to backend `POST /leads` | in progress (T-002; backend T-004) |
 | 4 | English version, SEO basics, analytics with cookie consent, Google Business Profile | planned |
 | 5 | AI assistant widget (labelled as AI), backed by backend phase 6 | idea |
 
