@@ -5,8 +5,9 @@ Last updated: 2026-10-12
 ## Live
 
 - Astro site from T-001 (merged to `main` in PR #2): `/`, three package pages, `/referencie/`, `/kontakt/`.
-- T-002 (merged in PR #3): the contact form on `/kontakt/` posts to `POST /leads` (backend T-004); it
-  renders only where the Netlify variable `PUBLIC_API_BASE_URL` is set (Production context).
+- Contact form on `/kontakt/` sends to `POST /leads` (T-002, PR #3, 2026-10-12). Owner tested it on
+  inocube.sk: the lead was stored and the notification e-mail arrived. `PUBLIC_API_BASE_URL` is set in Netlify
+  for the Production context only, so deploy previews show the "not in operation" notice.
 
 ## In progress
 

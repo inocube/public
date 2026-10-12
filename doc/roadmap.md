@@ -2,9 +2,9 @@
 
 | # | Phase | State |
 |---|---|---|
-| 1 | Astro rewrite with new Slovak copy | next (T-001) |
+| 1 | Astro rewrite with new Slovak copy | done (T-001); some texts still await owner approval |
 | 2 | Contact details, team, legal pages (privacy policy, imprint) | in progress (legal pages: T-003; team: later) |
-| 3 | Contact form connected to backend `POST /leads` | in progress (T-002; backend T-004) |
+| 3 | Contact form connected to backend `POST /leads` | done (T-002; backend T-004), 2026-10-12 |
 | 4 | English version, SEO basics, analytics with cookie consent, Google Business Profile | planned |
 | 5 | AI assistant widget (labelled as AI), backed by backend phase 6 | idea |
 
