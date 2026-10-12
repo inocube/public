@@ -1,6 +1,6 @@
 # T-003: Privacy policy and imprint pages
 
-- Status: review
+- Status: approved
 - Roadmap phase: 2 (legal pages part; team section stays out of scope)
 - Branch: feat/T-003-legal-pages
 
@@ -49,19 +49,10 @@ the footer and from the contact form notice, so a visitor sending the form can r
 Cookie banner, analytics, English version, team section, backend changes.
 
 ## Open questions
-Owner to provide (placeholders until then, do not block the PR on them). Register entry, konateľ and legal
-form were provided on 2026-10-12 and are in the imprint.
-- Confirm the processor list (AWS, Netlify, SimpleLogin/Proton) is complete. In particular: which provider
-  hosts the mailbox SimpleLogin forwards to? If it is not Proton, it is another recipient to list.
-- Placeholder `[DOPLNIŤ: poskytovateľ e-mailovej schránky a krajina]` (architect finding 1): owner to name
-  the mailbox provider.
-- Closed: Netlify log retention is stated as a criterion (art. 13(2)(a) allows criteria) instead of a
-  number Netlify does not publish for this plan. Backend logs hold no IP or personal data (API Gateway has
-  no access logging; Lambda logs only lead id and AWS error codes), so nothing to add.
-- The policy applies the form retention („do vybavenia dopytu, najdlhšie 2 roky“) also to e-mails and phone
-  calls, and lists e-mail/phone contact as a data source. Confirm the owner can keep that promise.
-- Approve the texts in `doc/content/web-copy-sk.md`, „Právne stránky“ (both pages, the form link text and the
-  footer link labels), then drop „(NÁVRH…)“ from the heading.
+(none) Answered by the owner on 2026-10-12: register entry, konateľ and legal form are in the imprint;
+SimpleLogin forwards to Proton Mail (Proton AG, Switzerland), now named in the policy; the 2-year limit also
+applies to e-mails and calls; texts approved. Netlify log retention is stated as a criterion
+(art. 13(2)(a)); backend logs hold no IP or personal data.
 
 ## Implementation notes
 - Branch `feat/T-003-legal-pages`, committed locally; the orchestrator pushes and opens the PR.

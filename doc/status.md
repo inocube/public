@@ -12,8 +12,8 @@ Last updated: 2026-10-12
 ## In progress
 
 - T-003 privacy policy `/ochrana-osobnych-udajov/` and imprint `/impresum/`, linked from the footer and the
-  form notice: in review on branch `feat/T-003-legal-pages`. Texts await owner approval
-  (`doc/content/web-copy-sk.md`, „Právne stránky“); one placeholder left (Netlify log retention).
+  form notice: texts approved by the owner on 2026-10-12, PR #5 waits for merge.
+  Follow-up candidate: enforce the 2-year limit (DynamoDB TTL in the backend, mailbox clean-up).
 
 ## Known issues
 

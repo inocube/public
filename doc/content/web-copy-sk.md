@@ -144,8 +144,8 @@ Navrhnuté v T-002, schválené vlastníkom 12. 10. 2026.
   Máte právo na prístup, opravu, vymazanie, obmedzenie, prenosnosť, námietku a sťažnosť na Úrad na ochranu
   osobných údajov SR; kontakt: {email}.
 
-## Právne stránky (NÁVRH, čaká na schválenie vlastníkom)
-Navrhnuté v T-003. Na webe sú stránky `/ochrana-osobnych-udajov/` a `/impresum/` (odkazy v pätičke)
+## Právne stránky
+Navrhnuté v T-003, schválené vlastníkom 12. 10. 2026. Na webe sú stránky `/ochrana-osobnych-udajov/` a `/impresum/` (odkazy v pätičke)
 a za informáciou o spracúvaní údajov pod formulárom je odkaz na stránku o ochrane osobných údajov.
 - **Odkaz pod formulárom:** Podrobnosti o ochrane osobných údajov
 - **Odkazy v pätičke:** Ochrana osobných údajov · Impresum
@@ -204,9 +204,9 @@ pracovať len podľa našich pokynov:
   upozornenia na novú správu e-mailom (služba Amazon SES). Údaje sú uložené v Európskej únii, v regióne
   Frankfurt (Nemecko).
 - **Netlify, Inc., USA:** hosting webu a technické záznamy servera.
-- **Proton AG, Švajčiarsko (služba SimpleLogin):** preposielanie e-mailov z našej firemnej adresy do našej
-  e-mailovej schránky. Touto službou prechádzajú e-maily, ktoré nám pošlete, aj upozornenia na správy
-  z formulára.
+- **Proton AG, Švajčiarsko (služby SimpleLogin a Proton Mail):** preposielanie e-mailov z našej firemnej
+  adresy (SimpleLogin) a ich uloženie v našej e-mailovej schránke (Proton Mail). Týmito službami prechádzajú
+  e-maily, ktoré nám pošlete, aj upozornenia na správy z formulára.
 
 Ak nám to uloží zákon, údaje poskytneme aj orgánom verejnej moci.
 
@@ -217,9 +217,8 @@ Ak nám to uloží zákon, údaje poskytneme aj orgánom verejnej moci.
 - **Švajčiarsko (Proton AG):** Európska komisia rozhodla, že Švajčiarsko zaručuje primeranú úroveň ochrany
   osobných údajov, preto na prenos nie sú potrebné ďalšie záruky.
 
-Databáza so správami z kontaktného formulára je v Európskej únii (Frankfurt). Kópiu každej správy však
-dostávame aj e-mailom, ktorý prechádza službou SimpleLogin vo Švajčiarsku do našej e-mailovej schránky
-[DOPLNIŤ: poskytovateľ e-mailovej schránky a krajina].
+Databáza so správami z kontaktného formulára je v Európskej únii (Frankfurt). Kópiu každej správy však dostávame aj e-mailom
+do našej e-mailovej schránky v službe Proton Mail vo Švajčiarsku.
 
 #### Ako dlho údaje uchovávame
 
