@@ -43,8 +43,10 @@ CAPTCHA, analytics, newsletter, backend changes.
 ## Owner steps
 1. Netlify: set `PUBLIC_API_BASE_URL` = `https://i6r0knhf3m.execute-api.eu-central-1.amazonaws.com/Prod` for the
    **Production** deploy context only (previews then show the notice and never write prod leads).
+   On the free plan "Scopes" stays *All scopes* (that means builds/functions, not deploy contexts). Under
+   **Values** choose *Different value for each deploy context*, fill only **Production**, leave the rest empty.
 2. ~~Approve the texts below~~ Done 2026-10-12 (legal name confirmed as InoCube s.r.o.).
-3. Merge only after backend T-004 (CORS incl. `OPTIONS /leads`) is deployed.
+3. Done 2026-10-12: backend T-004 (CORS incl. `OPTIONS /leads`) is deployed and verified (204 preflight, 201 + e-mail).
 
 ## Texts (approved by the owner on 2026-10-12)
 In `doc/content/web-copy-sk.md` („Kontaktný formulár“), used in `src/content/site/ui.yaml:45-62`.
